@@ -113,40 +113,30 @@ src/
   data/                    # mock data (shifts.ts, facilities.ts)
   router/
     index.ts
-  stores/                  # shared Pinia stores (auth, claims, etc.)
+  stores/                  # shared Pinia stores (auth, shifts, applications)
   modules/                 # feature modules AND domain modules — each follows the structure below
-    user/                  # AUTH-FOCUSED domain module — owns User base type, AnyUser union, UserType discriminator
+    user/                  # AUTH-FOCUSED domain module — owns User base type + UserType discriminator
       types/
       enums/
-    professional/          # owns Professional entity + Role enum (later: professional-specific UI if any)
+    professional/          # owns Professional entity + Role enum (Phase B will add /shifts UI here)
       types/
       enums/
-    facility/              # owns Facility + FacilityStaff entities + FacilityType + StaffPosition enums + facility dashboard UI
-      types/
-      enums/
-    landing/
-      components/          # feature-local components
-      routes/              # route definitions for this module
-      types/               # feature-specific types and interfaces
-      enums/               # feature-specific enums
-      services/            # data access, business logic
-      stores/              # feature-specific Pinia stores (e.g. shifts filter store)
-      views/               # page-level view components
-    signup/
-      components/
-      routes/
+    facility/              # owns Facility + FacilityStaff entities + facility portal UI
       types/
       enums/
       services/
-      views/
-    shifts/
+      composables/
       components/
-      routes/
+      views/
+    shifts/                # owns Shift entity + ShiftStatus / Urgency / ShiftType enums
+      types/
+      enums/
+    applications/          # owns ShiftApplication entity + ApplicationStatus enum + UI primitives
       types/
       enums/
       services/
-      views/
-  views/                   # only used for top-level shell views if any
+      composables/
+      components/
   App.vue
   main.ts
 ```
@@ -188,7 +178,10 @@ Each domain entity lives in the module that primarily owns it. Identity / auth c
 | `StaffPosition` enum | `src/modules/facility/enums/StaffPosition.ts` |
 | Feature-specific form types (`SignupFormValues`, `PostShiftFormErrors`) | `src/modules/<feature>/types/` |
 | Feature-specific enums (e.g., `SignupFormStep`) | `src/modules/<feature>/enums/` |
-| `Shift` (Phase 4) | `src/modules/shifts/types/Shift.ts` (shifts module owns its own domain) |
+| `Shift` entity | `src/modules/shifts/types/Shift.ts` |
+| `ShiftStatus` / `Urgency` / `ShiftType` enums | `src/modules/shifts/enums/` |
+| `ShiftApplication` entity | `src/modules/applications/types/ShiftApplication.ts` |
+| `ApplicationStatus` enum | `src/modules/applications/enums/ApplicationStatus.ts` |
 
 **No top-level `src/types/` or `src/enums/`.** Modular all the way down.
 
