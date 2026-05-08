@@ -1,0 +1,133 @@
+[
+  {
+    "id": "pro_001",
+    "type": "professional",
+    "role": "registered_nurse",
+    "name": "Alex Martinez",
+    "email": "alex.martinez@example.com",
+    "phone": "0412 345 678",
+    "yearsExperience": 8,
+    "certifications": ["AHPRA: NMW0001234567", "Advanced Life Support"],
+    "preferredLocations": ["Bondi, NSW", "Surry Hills, NSW"],
+    "createdAt": "2025-01-15T10:00:00.000Z"
+  },
+  {
+    "id": "pro_002",
+    "type": "professional",
+    "role": "registered_nurse",
+    "name": "Maya Singh",
+    "email": "maya.singh@example.com",
+    "phone": "0421 099 348",
+    "yearsExperience": 5,
+    "certifications": ["AHPRA: NMW0002345678", "Mental Health First Aid"],
+    "preferredLocations": ["Surry Hills, NSW", "Newtown, NSW"],
+    "createdAt": "2025-02-20T09:30:00.000Z"
+  },
+  {
+    "id": "pro_003",
+    "type": "professional",
+    "role": "enrolled_nurse",
+    "name": "Liam O'Brien",
+    "email": "liam.obrien@example.com",
+    "phone": "0433 211 765",
+    "yearsExperience": 3,
+    "certifications": ["AHPRA: NMW0003456789"],
+    "preferredLocations": ["St Leonards, NSW", "North Sydney, NSW"],
+    "createdAt": "2025-03-04T13:45:00.000Z"
+  },
+  {
+    "id": "pro_004",
+    "type": "professional",
+    "role": "midwife",
+    "name": "Aroha Tane",
+    "email": "aroha.tane@example.com",
+    "phone": "0444 887 102",
+    "yearsExperience": 12,
+    "certifications": [
+      "AHPRA: NMW0004567890",
+      "Lactation Consultant",
+      "Neonatal Resuscitation"
+    ],
+    "preferredLocations": ["St Leonards, NSW", "Manly, NSW"],
+    "createdAt": "2024-10-12T08:00:00.000Z"
+  },
+  {
+    "id": "pro_005",
+    "type": "professional",
+    "role": "assistant_in_nursing",
+    "name": "James Thompson",
+    "email": "james.thompson@example.com",
+    "phone": "0455 678 234",
+    "yearsExperience": 2,
+    "certifications": ["Cert III in Individual Support"],
+    "preferredLocations": ["Bondi, NSW", "Cronulla, NSW"],
+    "createdAt": "2025-04-01T11:20:00.000Z"
+  },
+  {
+    "id": "pro_006",
+    "type": "professional",
+    "role": "registered_nurse",
+    "name": "Isabella Romano",
+    "email": "isabella.romano@example.com",
+    "phone": "0466 234 991",
+    "yearsExperience": 6,
+    "certifications": [
+      "AHPRA: NMW0006789012",
+      "Mental Health Nursing — Postgrad Cert"
+    ],
+    "preferredLocations": ["Surry Hills, NSW", "Bondi, NSW"],
+    "createdAt": "2024-12-18T15:00:00.000Z"
+  },
+  {
+    "id": "pro_007",
+    "type": "professional",
+    "role": "carer",
+    "name": "Mohammed Al-Hassan",
+    "email": "m.alhassan@example.com",
+    "phone": "0477 102 884",
+    "yearsExperience": 4,
+    "certifications": ["Cert IV in Aged Care", "First Aid"],
+    "preferredLocations": ["Bondi, NSW", "Manly, NSW"],
+    "createdAt": "2024-11-29T10:30:00.000Z"
+  },
+  {
+    "id": "pro_008",
+    "type": "professional",
+    "role": "registered_nurse",
+    "name": "Emma Park",
+    "email": "emma.park@example.com",
+    "phone": "0488 339 567",
+    "yearsExperience": 10,
+    "certifications": [
+      "AHPRA: NMW0008901234",
+      "Palliative Care — Postgrad Cert",
+      "Wound Management"
+    ],
+    "preferredLocations": ["Manly, NSW", "Cronulla, NSW"],
+    "createdAt": "2024-08-22T09:00:00.000Z"
+  },
+  {
+    "id": "pro_009",
+    "type": "professional",
+    "role": "enrolled_nurse",
+    "name": "Wei Chen",
+    "email": "wei.chen@example.com",
+    "phone": "0499 445 712",
+    "yearsExperience": 4,
+    "certifications": ["AHPRA: NMW0009012345"],
+    "preferredLocations": ["St Leonards, NSW", "Cronulla, NSW"],
+    "createdAt": "2025-01-30T12:45:00.000Z"
+  },
+  {
+    "id": "pro_010",
+    "type": "professional",
+    "role": "assistant_in_nursing",
+    "name": "Olivia Bennett",
+    "email": "olivia.bennett@example.com",
+    "phone": "0410 226 358",
+    "yearsExperience": 1,
+    "certifications": ["Cert III in Individual Support", "Manual Handling"],
+    "preferredLocations": ["Bondi, NSW", "Surry Hills, NSW"],
+    "createdAt": "2025-04-15T08:15:00.000Z"
+  }
+]

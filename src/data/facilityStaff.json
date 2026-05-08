@@ -1,0 +1,52 @@
+[
+  {
+    "id": "fs_001",
+    "type": "facility_staff",
+    "facilityId": "fac_001",
+    "position": "nurse_manager",
+    "name": "Sarah Whitfield",
+    "email": "sarah.whitfield@stvincentsbondi.org.au",
+    "phone": "0411 234 567",
+    "createdAt": "2024-09-03T08:30:00.000Z"
+  },
+  {
+    "id": "fs_002",
+    "type": "facility_staff",
+    "facilityId": "fac_001",
+    "position": "roster_coordinator",
+    "name": "David Chen",
+    "email": "d.chen@stvincentsbondi.org.au",
+    "phone": "0422 891 305",
+    "createdAt": "2024-09-14T10:00:00.000Z"
+  },
+  {
+    "id": "fs_003",
+    "type": "facility_staff",
+    "facilityId": "fac_001",
+    "position": "charge_nurse",
+    "name": "Priya Sharma",
+    "email": "priya.sharma@stvincentsbondi.org.au",
+    "phone": "0433 712 994",
+    "createdAt": "2024-11-20T09:15:00.000Z"
+  },
+  {
+    "id": "fs_004",
+    "type": "facility_staff",
+    "facilityId": "fac_001",
+    "position": "hr_staff",
+    "name": "Tom Williamson",
+    "email": "tom.w@stvincentsbondi.org.au",
+    "phone": "0444 558 102",
+    "createdAt": "2025-03-02T11:00:00.000Z"
+  },
+  {
+    "id": "fs_005",
+    "type": "facility_staff",
+    "facilityId": "fac_001",
+    "position": "administrator",
+    "name": "Linda Park",
+    "email": "linda.park@stvincentsbondi.org.au",
+    "phone": "0455 901 743",
+    "createdAt": "2024-07-08T14:00:00.000Z"
+  }
+]

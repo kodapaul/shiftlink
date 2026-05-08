@@ -1,0 +1,11 @@
+[
+  {
+    "id": "fac_001",
+    "name": "St. Vincent's Aged Care — Bondi",
+    "type": "aged_care",
+    "location": "Bondi, NSW 2026",
+    "phone": "02 9300 1234",
+    "email": "roster@stvincentsbondi.org.au",
+    "createdAt": "2024-08-12T09:00:00.000Z"
+  }
+]

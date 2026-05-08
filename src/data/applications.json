@@ -1,0 +1,1944 @@
+[
+  {
+    "id": "app_001",
+    "shiftId": "sh_007",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-04-30T17:55:54.866Z"
+  },
+  {
+    "id": "app_002",
+    "shiftId": "sh_004",
+    "professionalId": "pro_004",
+    "status": "accepted",
+    "appliedAt": "2026-05-01T18:36:59.670Z",
+    "decidedAt": "2026-05-04T15:53:18.987Z",
+    "decidedByStaffId": "fs_004"
+  },
+  {
+    "id": "app_003",
+    "shiftId": "sh_008",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-01T18:44:20.068Z"
+  },
+  {
+    "id": "app_004",
+    "shiftId": "sh_019",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-02T03:30:54.991Z"
+  },
+  {
+    "id": "app_005",
+    "shiftId": "sh_013",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-03T07:35:48.798Z"
+  },
+  {
+    "id": "app_006",
+    "shiftId": "sh_012",
+    "professionalId": "pro_005",
+    "status": "accepted",
+    "appliedAt": "2026-05-03T13:08:47.594Z",
+    "decidedAt": "2026-05-04T23:46:17.326Z",
+    "decidedByStaffId": "fs_005",
+    "message": "Available this whole week if more come up."
+  },
+  {
+    "id": "app_007",
+    "shiftId": "sh_008",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-03T20:15:06.222Z"
+  },
+  {
+    "id": "app_008",
+    "shiftId": "sh_011",
+    "professionalId": "pro_008",
+    "status": "accepted",
+    "appliedAt": "2026-05-04T08:12:55.399Z",
+    "decidedAt": "2026-05-06T06:32:28.676Z",
+    "decidedByStaffId": "fs_004",
+    "message": "Confirmed available for the full shift."
+  },
+  {
+    "id": "app_009",
+    "shiftId": "sh_008",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-04T08:15:02.846Z",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_010",
+    "shiftId": "sh_021",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-05T00:37:20.727Z"
+  },
+  {
+    "id": "app_011",
+    "shiftId": "sh_008",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-05T02:38:23.604Z",
+    "message": "Can stay back if handover runs late."
+  },
+  {
+    "id": "app_012",
+    "shiftId": "sh_005",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-05T06:54:55.443Z",
+    "message": "Can stay back if handover runs late."
+  },
+  {
+    "id": "app_013",
+    "shiftId": "sh_013",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-05T08:10:39.423Z"
+  },
+  {
+    "id": "app_014",
+    "shiftId": "sh_005",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-05T16:21:13.603Z"
+  },
+  {
+    "id": "app_015",
+    "shiftId": "sh_029",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-05T18:49:58.880Z",
+    "message": "Regular night shift worker."
+  },
+  {
+    "id": "app_016",
+    "shiftId": "sh_021",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-05T18:56:56.201Z",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_017",
+    "shiftId": "sh_033",
+    "professionalId": "pro_007",
+    "status": "accepted",
+    "appliedAt": "2026-05-05T19:42:14.235Z",
+    "decidedAt": "2026-05-08T02:02:23.215Z",
+    "decidedByStaffId": "fs_005"
+  },
+  {
+    "id": "app_018",
+    "shiftId": "sh_003",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-05T19:59:14.646Z"
+  },
+  {
+    "id": "app_019",
+    "shiftId": "sh_015",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-05T21:04:53.047Z",
+    "message": "Familiar with the unit, happy to start early."
+  },
+  {
+    "id": "app_020",
+    "shiftId": "sh_008",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-06T00:52:35.967Z",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_021",
+    "shiftId": "sh_010",
+    "professionalId": "pro_004",
+    "status": "accepted",
+    "appliedAt": "2026-05-06T07:24:45.210Z",
+    "decidedAt": "2026-05-07T15:00:48.794Z",
+    "decidedByStaffId": "fs_004",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_022",
+    "shiftId": "sh_003",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-06T07:38:02.642Z"
+  },
+  {
+    "id": "app_023",
+    "shiftId": "sh_002",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-06T07:58:06.754Z"
+  },
+  {
+    "id": "app_024",
+    "shiftId": "sh_026",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-06T11:43:12.146Z"
+  },
+  {
+    "id": "app_025",
+    "shiftId": "sh_005",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-06T15:56:16.752Z"
+  },
+  {
+    "id": "app_026",
+    "shiftId": "sh_018",
+    "professionalId": "pro_010",
+    "status": "accepted",
+    "appliedAt": "2026-05-06T17:57:15.102Z",
+    "decidedAt": "2026-05-07T13:10:03.459Z",
+    "decidedByStaffId": "fs_004"
+  },
+  {
+    "id": "app_027",
+    "shiftId": "sh_014",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-06T22:13:38.041Z"
+  },
+  {
+    "id": "app_028",
+    "shiftId": "sh_020",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-07T03:29:35.237Z",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_029",
+    "shiftId": "sh_007",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-07T03:40:10.123Z"
+  },
+  {
+    "id": "app_030",
+    "shiftId": "sh_014",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-07T06:53:35.374Z"
+  },
+  {
+    "id": "app_031",
+    "shiftId": "sh_020",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-07T07:36:45.463Z"
+  },
+  {
+    "id": "app_032",
+    "shiftId": "sh_006",
+    "professionalId": "pro_007",
+    "status": "accepted",
+    "appliedAt": "2026-05-07T10:52:54.399Z",
+    "decidedAt": "2026-05-07T11:55:14.535Z",
+    "decidedByStaffId": "fs_005"
+  },
+  {
+    "id": "app_033",
+    "shiftId": "sh_017",
+    "professionalId": "pro_004",
+    "status": "accepted",
+    "appliedAt": "2026-05-07T13:08:52.726Z",
+    "decidedAt": "2026-05-08T18:34:21.070Z",
+    "decidedByStaffId": "fs_002"
+  },
+  {
+    "id": "app_034",
+    "shiftId": "sh_029",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-07T13:41:51.743Z"
+  },
+  {
+    "id": "app_035",
+    "shiftId": "sh_009",
+    "professionalId": "pro_008",
+    "status": "accepted",
+    "appliedAt": "2026-05-07T16:01:05.199Z",
+    "decidedAt": "2026-05-07T23:42:34.608Z",
+    "decidedByStaffId": "fs_002"
+  },
+  {
+    "id": "app_036",
+    "shiftId": "sh_005",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-07T21:37:47.192Z"
+  },
+  {
+    "id": "app_037",
+    "shiftId": "sh_031",
+    "professionalId": "pro_002",
+    "status": "accepted",
+    "appliedAt": "2026-05-08T03:41:37.024Z",
+    "decidedAt": "2026-05-12T04:48:17.166Z",
+    "decidedByStaffId": "fs_002",
+    "message": "Can stay back if handover runs late."
+  },
+  {
+    "id": "app_038",
+    "shiftId": "sh_019",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-08T14:04:30.159Z"
+  },
+  {
+    "id": "app_039",
+    "shiftId": "sh_015",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-08T14:14:43.555Z"
+  },
+  {
+    "id": "app_040",
+    "shiftId": "sh_020",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-08T16:27:52.236Z"
+  },
+  {
+    "id": "app_041",
+    "shiftId": "sh_014",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-08T23:03:41.156Z"
+  },
+  {
+    "id": "app_042",
+    "shiftId": "sh_019",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-09T12:04:08.779Z"
+  },
+  {
+    "id": "app_043",
+    "shiftId": "sh_013",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-09T14:37:21.715Z",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_044",
+    "shiftId": "sh_016",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-09T20:52:50.103Z"
+  },
+  {
+    "id": "app_045",
+    "shiftId": "sh_028",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-09T20:54:32.299Z",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_046",
+    "shiftId": "sh_015",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-09T22:27:04.078Z"
+  },
+  {
+    "id": "app_047",
+    "shiftId": "sh_041",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-10T02:33:47.095Z"
+  },
+  {
+    "id": "app_048",
+    "shiftId": "sh_029",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-10T02:36:20.621Z"
+  },
+  {
+    "id": "app_049",
+    "shiftId": "sh_022",
+    "professionalId": "pro_009",
+    "status": "accepted",
+    "appliedAt": "2026-05-10T04:23:22.347Z",
+    "decidedAt": "2026-05-10T11:46:52.251Z",
+    "decidedByStaffId": "fs_005"
+  },
+  {
+    "id": "app_050",
+    "shiftId": "sh_026",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-10T14:33:24.203Z"
+  },
+  {
+    "id": "app_051",
+    "shiftId": "sh_023",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-10T14:57:22.866Z"
+  },
+  {
+    "id": "app_052",
+    "shiftId": "sh_023",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-10T16:36:02.098Z",
+    "message": "Available this whole week if more come up."
+  },
+  {
+    "id": "app_053",
+    "shiftId": "sh_023",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-10T17:15:13.084Z",
+    "message": "Mental Health First Aid certified."
+  },
+  {
+    "id": "app_054",
+    "shiftId": "sh_025",
+    "professionalId": "pro_002",
+    "status": "accepted",
+    "appliedAt": "2026-05-10T17:28:38.037Z",
+    "decidedAt": "2026-05-11T14:05:09.436Z",
+    "decidedByStaffId": "fs_004"
+  },
+  {
+    "id": "app_055",
+    "shiftId": "sh_028",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-10T19:14:47.427Z",
+    "message": "AHPRA current, immunisations up to date."
+  },
+  {
+    "id": "app_056",
+    "shiftId": "sh_056",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-10T19:52:30.763Z"
+  },
+  {
+    "id": "app_057",
+    "shiftId": "sh_047",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-10T20:30:07.472Z"
+  },
+  {
+    "id": "app_058",
+    "shiftId": "sh_016",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-10T21:25:41.623Z"
+  },
+  {
+    "id": "app_059",
+    "shiftId": "sh_027",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-11T01:00:35.569Z"
+  },
+  {
+    "id": "app_060",
+    "shiftId": "sh_028",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-11T01:30:19.179Z"
+  },
+  {
+    "id": "app_061",
+    "shiftId": "sh_040",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-11T01:43:13.550Z"
+  },
+  {
+    "id": "app_062",
+    "shiftId": "sh_027",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-11T10:10:45.454Z"
+  },
+  {
+    "id": "app_063",
+    "shiftId": "sh_026",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-11T11:37:27.836Z"
+  },
+  {
+    "id": "app_064",
+    "shiftId": "sh_045",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-11T14:10:22.820Z"
+  },
+  {
+    "id": "app_065",
+    "shiftId": "sh_065",
+    "professionalId": "pro_003",
+    "status": "accepted",
+    "appliedAt": "2026-05-11T16:28:11.033Z",
+    "decidedAt": "2026-05-14T00:07:35.375Z",
+    "decidedByStaffId": "fs_001"
+  },
+  {
+    "id": "app_066",
+    "shiftId": "sh_026",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-11T18:35:20.198Z"
+  },
+  {
+    "id": "app_067",
+    "shiftId": "sh_024",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-11T20:27:24.853Z"
+  },
+  {
+    "id": "app_068",
+    "shiftId": "sh_024",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-11T21:13:17.501Z"
+  },
+  {
+    "id": "app_069",
+    "shiftId": "sh_024",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-11T22:18:06.663Z"
+  },
+  {
+    "id": "app_070",
+    "shiftId": "sh_024",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-11T22:53:59.530Z"
+  },
+  {
+    "id": "app_071",
+    "shiftId": "sh_027",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-11T23:12:34.018Z"
+  },
+  {
+    "id": "app_072",
+    "shiftId": "sh_045",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-12T01:02:29.818Z"
+  },
+  {
+    "id": "app_073",
+    "shiftId": "sh_032",
+    "professionalId": "pro_001",
+    "status": "accepted",
+    "appliedAt": "2026-05-12T03:33:43.947Z",
+    "decidedAt": "2026-05-12T17:45:17.123Z",
+    "decidedByStaffId": "fs_002",
+    "message": "Available this whole week if more come up."
+  },
+  {
+    "id": "app_074",
+    "shiftId": "sh_038",
+    "professionalId": "pro_005",
+    "status": "accepted",
+    "appliedAt": "2026-05-12T06:42:09.893Z",
+    "decidedAt": "2026-05-13T21:08:16.164Z",
+    "decidedByStaffId": "fs_001"
+  },
+  {
+    "id": "app_075",
+    "shiftId": "sh_040",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-12T10:26:08.647Z"
+  },
+  {
+    "id": "app_076",
+    "shiftId": "sh_045",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-12T11:45:30.620Z"
+  },
+  {
+    "id": "app_077",
+    "shiftId": "sh_030",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-12T14:16:22.715Z"
+  },
+  {
+    "id": "app_078",
+    "shiftId": "sh_030",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-12T15:00:40.107Z",
+    "message": "Familiar with the unit, happy to start early."
+  },
+  {
+    "id": "app_079",
+    "shiftId": "sh_035",
+    "professionalId": "pro_002",
+    "status": "accepted",
+    "appliedAt": "2026-05-12T17:47:38.713Z",
+    "decidedAt": "2026-05-13T06:08:59.535Z",
+    "decidedByStaffId": "fs_002",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_080",
+    "shiftId": "sh_049",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-12T19:39:52.207Z"
+  },
+  {
+    "id": "app_081",
+    "shiftId": "sh_047",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-12T22:30:38.965Z"
+  },
+  {
+    "id": "app_082",
+    "shiftId": "sh_072",
+    "professionalId": "pro_001",
+    "status": "accepted",
+    "appliedAt": "2026-05-13T11:51:22.123Z",
+    "decidedAt": "2026-05-15T01:01:45.645Z",
+    "decidedByStaffId": "fs_003"
+  },
+  {
+    "id": "app_083",
+    "shiftId": "sh_049",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-13T12:54:57.784Z",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_084",
+    "shiftId": "sh_041",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-13T13:15:00.300Z"
+  },
+  {
+    "id": "app_085",
+    "shiftId": "sh_045",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-13T14:49:20.536Z"
+  },
+  {
+    "id": "app_086",
+    "shiftId": "sh_055",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-13T15:38:59.328Z",
+    "message": "Regular night shift worker."
+  },
+  {
+    "id": "app_087",
+    "shiftId": "sh_036",
+    "professionalId": "pro_002",
+    "status": "accepted",
+    "appliedAt": "2026-05-13T16:07:17.605Z",
+    "decidedAt": "2026-05-13T20:00:46.823Z",
+    "decidedByStaffId": "fs_005"
+  },
+  {
+    "id": "app_088",
+    "shiftId": "sh_046",
+    "professionalId": "pro_007",
+    "status": "accepted",
+    "appliedAt": "2026-05-13T18:13:13.352Z",
+    "decidedAt": "2026-05-15T00:10:00.448Z",
+    "decidedByStaffId": "fs_004"
+  },
+  {
+    "id": "app_089",
+    "shiftId": "sh_039",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-13T20:21:09.294Z",
+    "message": "Familiar with the unit, happy to start early."
+  },
+  {
+    "id": "app_090",
+    "shiftId": "sh_034",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-13T20:55:47.465Z"
+  },
+  {
+    "id": "app_091",
+    "shiftId": "sh_037",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-13T22:15:46.621Z",
+    "message": "Regular night shift worker."
+  },
+  {
+    "id": "app_092",
+    "shiftId": "sh_039",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-13T22:36:08.032Z"
+  },
+  {
+    "id": "app_093",
+    "shiftId": "sh_034",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-13T22:40:19.369Z"
+  },
+  {
+    "id": "app_094",
+    "shiftId": "sh_034",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-13T22:42:15.789Z",
+    "message": "Available this whole week if more come up."
+  },
+  {
+    "id": "app_095",
+    "shiftId": "sh_037",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-13T22:50:42.226Z"
+  },
+  {
+    "id": "app_096",
+    "shiftId": "sh_037",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-13T23:01:02.469Z"
+  },
+  {
+    "id": "app_097",
+    "shiftId": "sh_062",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-13T23:57:41.750Z",
+    "message": "AHPRA current, immunisations up to date."
+  },
+  {
+    "id": "app_098",
+    "shiftId": "sh_040",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-14T01:49:25.167Z"
+  },
+  {
+    "id": "app_099",
+    "shiftId": "sh_042",
+    "professionalId": "pro_001",
+    "status": "accepted",
+    "appliedAt": "2026-05-14T02:41:18.482Z",
+    "decidedAt": "2026-05-14T09:04:07.574Z",
+    "decidedByStaffId": "fs_004"
+  },
+  {
+    "id": "app_100",
+    "shiftId": "sh_051",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-14T03:53:59.413Z"
+  },
+  {
+    "id": "app_101",
+    "shiftId": "sh_085",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-14T04:55:57.416Z"
+  },
+  {
+    "id": "app_102",
+    "shiftId": "sh_045",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-14T07:48:57.226Z"
+  },
+  {
+    "id": "app_103",
+    "shiftId": "sh_057",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-14T07:59:27.434Z"
+  },
+  {
+    "id": "app_104",
+    "shiftId": "sh_049",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-14T10:08:59.868Z"
+  },
+  {
+    "id": "app_105",
+    "shiftId": "sh_057",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-14T10:48:23.912Z"
+  },
+  {
+    "id": "app_106",
+    "shiftId": "sh_043",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-14T12:38:51.625Z"
+  },
+  {
+    "id": "app_107",
+    "shiftId": "sh_090",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-14T14:47:49.601Z"
+  },
+  {
+    "id": "app_108",
+    "shiftId": "sh_060",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-14T16:33:44.624Z",
+    "message": "Familiar with the unit, happy to start early."
+  },
+  {
+    "id": "app_109",
+    "shiftId": "sh_091",
+    "professionalId": "pro_004",
+    "status": "accepted",
+    "appliedAt": "2026-05-14T21:39:48.838Z",
+    "decidedAt": "2026-05-15T06:30:41.027Z",
+    "decidedByStaffId": "fs_005"
+  },
+  {
+    "id": "app_110",
+    "shiftId": "sh_044",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-14T22:06:44.130Z"
+  },
+  {
+    "id": "app_111",
+    "shiftId": "sh_057",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-14T22:26:37.105Z"
+  },
+  {
+    "id": "app_112",
+    "shiftId": "sh_043",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-14T23:48:08.333Z"
+  },
+  {
+    "id": "app_113",
+    "shiftId": "sh_049",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-15T00:47:39.574Z"
+  },
+  {
+    "id": "app_114",
+    "shiftId": "sh_049",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-15T02:33:55.303Z",
+    "message": "Available and have palliative care experience."
+  },
+  {
+    "id": "app_115",
+    "shiftId": "sh_054",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-15T04:43:02.910Z"
+  },
+  {
+    "id": "app_116",
+    "shiftId": "sh_050",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-15T05:01:19.256Z"
+  },
+  {
+    "id": "app_117",
+    "shiftId": "sh_055",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-15T06:02:19.842Z",
+    "message": "Familiar with the unit, happy to start early."
+  },
+  {
+    "id": "app_118",
+    "shiftId": "sh_057",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-15T07:48:11.747Z"
+  },
+  {
+    "id": "app_119",
+    "shiftId": "sh_054",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-15T11:22:13.643Z",
+    "message": "Mental Health First Aid certified."
+  },
+  {
+    "id": "app_120",
+    "shiftId": "sh_058",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-15T11:57:18.369Z",
+    "message": "Mental Health First Aid certified."
+  },
+  {
+    "id": "app_121",
+    "shiftId": "sh_092",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-15T16:53:11.404Z"
+  },
+  {
+    "id": "app_122",
+    "shiftId": "sh_053",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-15T17:51:51.113Z"
+  },
+  {
+    "id": "app_123",
+    "shiftId": "sh_053",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-15T17:58:16.266Z"
+  },
+  {
+    "id": "app_124",
+    "shiftId": "sh_058",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-15T18:18:30.929Z"
+  },
+  {
+    "id": "app_125",
+    "shiftId": "sh_092",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-15T18:36:17.650Z"
+  },
+  {
+    "id": "app_126",
+    "shiftId": "sh_053",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-15T19:23:07.906Z",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_127",
+    "shiftId": "sh_087",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-15T22:31:14.002Z"
+  },
+  {
+    "id": "app_128",
+    "shiftId": "sh_090",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-15T23:29:50.964Z"
+  },
+  {
+    "id": "app_129",
+    "shiftId": "sh_051",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-15T23:58:51.133Z"
+  },
+  {
+    "id": "app_130",
+    "shiftId": "sh_050",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-16T02:30:29.705Z",
+    "message": "Familiar with the unit, happy to start early."
+  },
+  {
+    "id": "app_131",
+    "shiftId": "sh_064",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-16T03:34:11.455Z",
+    "message": "Mental Health First Aid certified."
+  },
+  {
+    "id": "app_132",
+    "shiftId": "sh_057",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-16T04:34:58.600Z"
+  },
+  {
+    "id": "app_133",
+    "shiftId": "sh_081",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-16T05:39:44.247Z"
+  },
+  {
+    "id": "app_134",
+    "shiftId": "sh_053",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-16T06:03:17.159Z"
+  },
+  {
+    "id": "app_135",
+    "shiftId": "sh_052",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-16T06:44:18.145Z",
+    "message": "Confirmed available for the full shift."
+  },
+  {
+    "id": "app_136",
+    "shiftId": "sh_059",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-16T07:03:18.691Z",
+    "message": "Confirmed available for the full shift."
+  },
+  {
+    "id": "app_137",
+    "shiftId": "sh_053",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-16T07:08:23.869Z"
+  },
+  {
+    "id": "app_138",
+    "shiftId": "sh_087",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-16T11:04:41.066Z"
+  },
+  {
+    "id": "app_139",
+    "shiftId": "sh_055",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-16T14:51:07.137Z"
+  },
+  {
+    "id": "app_140",
+    "shiftId": "sh_051",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-16T17:08:47.703Z"
+  },
+  {
+    "id": "app_141",
+    "shiftId": "sh_089",
+    "professionalId": "pro_005",
+    "status": "accepted",
+    "appliedAt": "2026-05-16T17:56:58.972Z",
+    "decidedAt": "2026-05-20T11:37:17.702Z",
+    "decidedByStaffId": "fs_003"
+  },
+  {
+    "id": "app_142",
+    "shiftId": "sh_074",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-16T20:19:32.172Z",
+    "message": "Mental Health First Aid certified."
+  },
+  {
+    "id": "app_143",
+    "shiftId": "sh_064",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-16T21:55:38.408Z",
+    "message": "Available and have palliative care experience."
+  },
+  {
+    "id": "app_144",
+    "shiftId": "sh_085",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-16T22:51:43.828Z"
+  },
+  {
+    "id": "app_145",
+    "shiftId": "sh_097",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-16T23:32:49.286Z"
+  },
+  {
+    "id": "app_146",
+    "shiftId": "sh_059",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-17T00:40:41.613Z"
+  },
+  {
+    "id": "app_147",
+    "shiftId": "sh_067",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-17T02:07:22.259Z",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_148",
+    "shiftId": "sh_058",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-17T09:38:06.605Z"
+  },
+  {
+    "id": "app_149",
+    "shiftId": "sh_102",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-17T10:31:38.070Z"
+  },
+  {
+    "id": "app_150",
+    "shiftId": "sh_062",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-17T11:02:30.205Z"
+  },
+  {
+    "id": "app_151",
+    "shiftId": "sh_058",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-17T11:39:42.338Z"
+  },
+  {
+    "id": "app_152",
+    "shiftId": "sh_055",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-17T15:02:08.665Z",
+    "message": "Available and have palliative care experience."
+  },
+  {
+    "id": "app_153",
+    "shiftId": "sh_087",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-17T15:29:13.540Z"
+  },
+  {
+    "id": "app_154",
+    "shiftId": "sh_096",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-17T19:02:08.340Z",
+    "message": "Mental Health First Aid certified."
+  },
+  {
+    "id": "app_155",
+    "shiftId": "sh_070",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-17T20:27:17.614Z"
+  },
+  {
+    "id": "app_156",
+    "shiftId": "sh_071",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-18T04:26:45.914Z"
+  },
+  {
+    "id": "app_157",
+    "shiftId": "sh_070",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-18T09:22:17.468Z"
+  },
+  {
+    "id": "app_158",
+    "shiftId": "sh_066",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-18T12:43:03.030Z"
+  },
+  {
+    "id": "app_159",
+    "shiftId": "sh_070",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-18T12:49:35.027Z"
+  },
+  {
+    "id": "app_160",
+    "shiftId": "sh_063",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-18T14:06:22.914Z"
+  },
+  {
+    "id": "app_161",
+    "shiftId": "sh_094",
+    "professionalId": "pro_001",
+    "status": "accepted",
+    "appliedAt": "2026-05-18T16:53:20.761Z",
+    "decidedAt": "2026-05-18T22:10:45.879Z",
+    "decidedByStaffId": "fs_005"
+  },
+  {
+    "id": "app_162",
+    "shiftId": "sh_092",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-18T17:14:13.576Z"
+  },
+  {
+    "id": "app_163",
+    "shiftId": "sh_097",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-18T17:41:28.414Z"
+  },
+  {
+    "id": "app_164",
+    "shiftId": "sh_063",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-18T17:55:02.200Z"
+  },
+  {
+    "id": "app_165",
+    "shiftId": "sh_063",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-18T18:19:54.691Z",
+    "message": "Available and have palliative care experience."
+  },
+  {
+    "id": "app_166",
+    "shiftId": "sh_068",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-18T19:08:51.331Z"
+  },
+  {
+    "id": "app_167",
+    "shiftId": "sh_100",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-18T21:19:49.540Z",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_168",
+    "shiftId": "sh_077",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-18T22:47:00.381Z"
+  },
+  {
+    "id": "app_169",
+    "shiftId": "sh_084",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-19T00:50:16.260Z",
+    "message": "AHPRA current, immunisations up to date."
+  },
+  {
+    "id": "app_170",
+    "shiftId": "sh_071",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-19T05:47:58.101Z",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_171",
+    "shiftId": "sh_069",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-19T06:02:59.150Z",
+    "message": "Available and have palliative care experience."
+  },
+  {
+    "id": "app_172",
+    "shiftId": "sh_096",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-19T09:34:41.486Z"
+  },
+  {
+    "id": "app_173",
+    "shiftId": "sh_076",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-19T13:05:49.552Z",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_174",
+    "shiftId": "sh_079",
+    "professionalId": "pro_004",
+    "status": "accepted",
+    "appliedAt": "2026-05-19T14:06:29.076Z",
+    "decidedAt": "2026-05-20T00:34:04.859Z",
+    "decidedByStaffId": "fs_003"
+  },
+  {
+    "id": "app_175",
+    "shiftId": "sh_076",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-19T14:24:02.333Z"
+  },
+  {
+    "id": "app_176",
+    "shiftId": "sh_077",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-19T17:29:50.188Z"
+  },
+  {
+    "id": "app_177",
+    "shiftId": "sh_077",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-19T18:54:42.301Z"
+  },
+  {
+    "id": "app_178",
+    "shiftId": "sh_068",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-19T20:32:44.799Z",
+    "message": "Mental Health First Aid certified."
+  },
+  {
+    "id": "app_179",
+    "shiftId": "sh_071",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-19T21:33:31.909Z"
+  },
+  {
+    "id": "app_180",
+    "shiftId": "sh_093",
+    "professionalId": "pro_002",
+    "status": "accepted",
+    "appliedAt": "2026-05-19T21:34:58.730Z",
+    "decidedAt": "2026-05-20T22:28:31.841Z",
+    "decidedByStaffId": "fs_004"
+  },
+  {
+    "id": "app_181",
+    "shiftId": "sh_111",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-19T23:24:22.192Z"
+  },
+  {
+    "id": "app_182",
+    "shiftId": "sh_099",
+    "professionalId": "pro_007",
+    "status": "accepted",
+    "appliedAt": "2026-05-20T00:18:09.550Z",
+    "decidedAt": "2026-05-20T11:20:30.715Z",
+    "decidedByStaffId": "fs_004",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_183",
+    "shiftId": "sh_081",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-20T00:30:28.399Z"
+  },
+  {
+    "id": "app_184",
+    "shiftId": "sh_074",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-20T05:28:20.502Z"
+  },
+  {
+    "id": "app_185",
+    "shiftId": "sh_096",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-20T05:56:24.813Z"
+  },
+  {
+    "id": "app_186",
+    "shiftId": "sh_084",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-20T07:18:27.627Z"
+  },
+  {
+    "id": "app_187",
+    "shiftId": "sh_073",
+    "professionalId": "pro_007",
+    "status": "accepted",
+    "appliedAt": "2026-05-20T08:36:55.291Z",
+    "decidedAt": "2026-05-20T17:26:54.958Z",
+    "decidedByStaffId": "fs_003"
+  },
+  {
+    "id": "app_188",
+    "shiftId": "sh_109",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-20T18:03:58.311Z"
+  },
+  {
+    "id": "app_189",
+    "shiftId": "sh_075",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-20T18:41:35.543Z"
+  },
+  {
+    "id": "app_190",
+    "shiftId": "sh_075",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-20T19:46:57.752Z"
+  },
+  {
+    "id": "app_191",
+    "shiftId": "sh_098",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-20T19:58:33.531Z"
+  },
+  {
+    "id": "app_192",
+    "shiftId": "sh_078",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-20T20:13:49.028Z"
+  },
+  {
+    "id": "app_193",
+    "shiftId": "sh_080",
+    "professionalId": "pro_006",
+    "status": "accepted",
+    "appliedAt": "2026-05-20T22:24:55.969Z",
+    "decidedAt": "2026-05-21T17:06:47.175Z",
+    "decidedByStaffId": "fs_003"
+  },
+  {
+    "id": "app_194",
+    "shiftId": "sh_098",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-20T22:51:20.809Z"
+  },
+  {
+    "id": "app_195",
+    "shiftId": "sh_076",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-20T23:33:08.827Z",
+    "message": "Available and have palliative care experience."
+  },
+  {
+    "id": "app_196",
+    "shiftId": "sh_114",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-21T01:46:31.476Z",
+    "message": "AHPRA current, immunisations up to date."
+  },
+  {
+    "id": "app_197",
+    "shiftId": "sh_084",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-21T04:39:34.758Z"
+  },
+  {
+    "id": "app_198",
+    "shiftId": "sh_084",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-21T05:25:59.371Z"
+  },
+  {
+    "id": "app_199",
+    "shiftId": "sh_083",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-21T11:12:03.755Z"
+  },
+  {
+    "id": "app_200",
+    "shiftId": "sh_097",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-21T12:22:03.024Z"
+  },
+  {
+    "id": "app_201",
+    "shiftId": "sh_082",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-21T14:18:58.787Z"
+  },
+  {
+    "id": "app_202",
+    "shiftId": "sh_112",
+    "professionalId": "pro_001",
+    "status": "accepted",
+    "appliedAt": "2026-05-21T14:30:47.523Z",
+    "decidedAt": "2026-05-22T15:10:39.496Z",
+    "decidedByStaffId": "fs_004",
+    "message": "Available this whole week if more come up."
+  },
+  {
+    "id": "app_203",
+    "shiftId": "sh_085",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-21T15:34:57.761Z"
+  },
+  {
+    "id": "app_204",
+    "shiftId": "sh_082",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-21T16:25:50.897Z"
+  },
+  {
+    "id": "app_205",
+    "shiftId": "sh_087",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-21T17:56:02.519Z"
+  },
+  {
+    "id": "app_206",
+    "shiftId": "sh_086",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-21T18:27:54.564Z"
+  },
+  {
+    "id": "app_207",
+    "shiftId": "sh_086",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-21T18:32:40.547Z"
+  },
+  {
+    "id": "app_208",
+    "shiftId": "sh_083",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-21T19:06:05.955Z"
+  },
+  {
+    "id": "app_209",
+    "shiftId": "sh_083",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-21T19:34:39.484Z"
+  },
+  {
+    "id": "app_210",
+    "shiftId": "sh_082",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-21T21:16:39.445Z"
+  },
+  {
+    "id": "app_211",
+    "shiftId": "sh_083",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-21T21:27:40.979Z"
+  },
+  {
+    "id": "app_212",
+    "shiftId": "sh_083",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-21T21:31:55.450Z",
+    "message": "Can stay back if handover runs late."
+  },
+  {
+    "id": "app_213",
+    "shiftId": "sh_102",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-22T02:14:42.979Z"
+  },
+  {
+    "id": "app_214",
+    "shiftId": "sh_103",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-22T11:04:15.580Z"
+  },
+  {
+    "id": "app_215",
+    "shiftId": "sh_098",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-22T12:43:11.552Z"
+  },
+  {
+    "id": "app_216",
+    "shiftId": "sh_098",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-22T19:52:01.550Z",
+    "message": "Confirmed available for the full shift."
+  },
+  {
+    "id": "app_217",
+    "shiftId": "sh_109",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-23T05:17:16.244Z"
+  },
+  {
+    "id": "app_218",
+    "shiftId": "sh_098",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-23T09:14:37.419Z"
+  },
+  {
+    "id": "app_219",
+    "shiftId": "sh_104",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-23T10:40:22.701Z"
+  },
+  {
+    "id": "app_220",
+    "shiftId": "sh_111",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-23T10:41:59.395Z"
+  },
+  {
+    "id": "app_221",
+    "shiftId": "sh_117",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-23T11:49:34.139Z"
+  },
+  {
+    "id": "app_222",
+    "shiftId": "sh_111",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-23T17:34:20.617Z"
+  },
+  {
+    "id": "app_223",
+    "shiftId": "sh_104",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-23T17:55:44.833Z"
+  },
+  {
+    "id": "app_224",
+    "shiftId": "sh_104",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-23T19:56:27.073Z"
+  },
+  {
+    "id": "app_225",
+    "shiftId": "sh_110",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-23T21:17:48.915Z"
+  },
+  {
+    "id": "app_226",
+    "shiftId": "sh_114",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-23T22:15:28.160Z"
+  },
+  {
+    "id": "app_227",
+    "shiftId": "sh_110",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-23T22:30:54.523Z"
+  },
+  {
+    "id": "app_228",
+    "shiftId": "sh_097",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-23T23:15:37.255Z"
+  },
+  {
+    "id": "app_229",
+    "shiftId": "sh_110",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-24T00:17:20.725Z"
+  },
+  {
+    "id": "app_230",
+    "shiftId": "sh_100",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-24T03:05:59.894Z"
+  },
+  {
+    "id": "app_231",
+    "shiftId": "sh_110",
+    "professionalId": "pro_007",
+    "status": "pending",
+    "appliedAt": "2026-05-24T04:26:04.775Z",
+    "message": "Available this whole week if more come up."
+  },
+  {
+    "id": "app_232",
+    "shiftId": "sh_111",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-24T05:51:52.609Z"
+  },
+  {
+    "id": "app_233",
+    "shiftId": "sh_106",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-24T08:16:17.344Z",
+    "message": "Familiar with the unit, happy to start early."
+  },
+  {
+    "id": "app_234",
+    "shiftId": "sh_116",
+    "professionalId": "pro_009",
+    "status": "accepted",
+    "appliedAt": "2026-05-24T09:49:52.053Z",
+    "decidedAt": "2026-05-26T06:37:23.911Z",
+    "decidedByStaffId": "fs_003"
+  },
+  {
+    "id": "app_235",
+    "shiftId": "sh_111",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-24T12:03:26.626Z"
+  },
+  {
+    "id": "app_236",
+    "shiftId": "sh_105",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-24T12:32:07.847Z"
+  },
+  {
+    "id": "app_237",
+    "shiftId": "sh_106",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-24T13:00:08.151Z"
+  },
+  {
+    "id": "app_238",
+    "shiftId": "sh_110",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-24T13:35:18.831Z"
+  },
+  {
+    "id": "app_239",
+    "shiftId": "sh_101",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-24T14:43:31.123Z"
+  },
+  {
+    "id": "app_240",
+    "shiftId": "sh_105",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-24T16:04:10.125Z"
+  },
+  {
+    "id": "app_241",
+    "shiftId": "sh_107",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-24T17:15:19.456Z",
+    "message": "Public transport-friendly availability."
+  },
+  {
+    "id": "app_242",
+    "shiftId": "sh_107",
+    "professionalId": "pro_004",
+    "status": "pending",
+    "appliedAt": "2026-05-24T18:15:42.743Z"
+  },
+  {
+    "id": "app_243",
+    "shiftId": "sh_107",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-24T21:03:22.135Z"
+  },
+  {
+    "id": "app_244",
+    "shiftId": "sh_115",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-24T21:42:51.704Z"
+  },
+  {
+    "id": "app_245",
+    "shiftId": "sh_107",
+    "professionalId": "pro_009",
+    "status": "pending",
+    "appliedAt": "2026-05-24T22:36:21.798Z"
+  },
+  {
+    "id": "app_246",
+    "shiftId": "sh_108",
+    "professionalId": "pro_010",
+    "status": "pending",
+    "appliedAt": "2026-05-25T00:21:20.478Z",
+    "message": "Available this whole week if more come up."
+  },
+  {
+    "id": "app_247",
+    "shiftId": "sh_117",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-25T00:39:15.431Z"
+  },
+  {
+    "id": "app_248",
+    "shiftId": "sh_114",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-25T02:43:49.031Z"
+  },
+  {
+    "id": "app_249",
+    "shiftId": "sh_113",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-25T06:46:23.423Z",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_250",
+    "shiftId": "sh_109",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-25T10:06:26.039Z"
+  },
+  {
+    "id": "app_251",
+    "shiftId": "sh_117",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-25T13:02:46.239Z"
+  },
+  {
+    "id": "app_252",
+    "shiftId": "sh_108",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-25T13:55:18.707Z",
+    "message": "Familiar with the unit, happy to start early."
+  },
+  {
+    "id": "app_253",
+    "shiftId": "sh_115",
+    "professionalId": "pro_003",
+    "status": "pending",
+    "appliedAt": "2026-05-25T21:08:10.030Z"
+  },
+  {
+    "id": "app_254",
+    "shiftId": "sh_108",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-25T22:18:55.373Z",
+    "message": "Worked similar shifts here last month."
+  },
+  {
+    "id": "app_255",
+    "shiftId": "sh_115",
+    "professionalId": "pro_001",
+    "status": "pending",
+    "appliedAt": "2026-05-26T01:49:53.652Z"
+  },
+  {
+    "id": "app_256",
+    "shiftId": "sh_114",
+    "professionalId": "pro_002",
+    "status": "pending",
+    "appliedAt": "2026-05-26T16:58:14.099Z"
+  },
+  {
+    "id": "app_257",
+    "shiftId": "sh_120",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-27T15:09:02.587Z"
+  },
+  {
+    "id": "app_258",
+    "shiftId": "sh_120",
+    "professionalId": "pro_008",
+    "status": "pending",
+    "appliedAt": "2026-05-27T18:26:56.526Z"
+  },
+  {
+    "id": "app_259",
+    "shiftId": "sh_121",
+    "professionalId": "pro_005",
+    "status": "pending",
+    "appliedAt": "2026-05-27T19:00:45.625Z"
+  },
+  {
+    "id": "app_260",
+    "shiftId": "sh_119",
+    "professionalId": "pro_006",
+    "status": "pending",
+    "appliedAt": "2026-05-27T19:46:00.959Z",
+    "message": "AHPRA current, immunisations up to date."
+  }
+]
