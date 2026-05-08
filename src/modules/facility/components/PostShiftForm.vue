@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import { Label } from '@/components/ui/label'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Textarea } from '@/components/ui/textarea'
+import RichTextEditor from '@/components/RichTextEditor.vue'
 import { Input } from '@/components/ui/input'
 import { Urgency } from '@/modules/shifts/enums'
 import { usePostShiftForm } from '../composables/usePostShiftForm'
@@ -273,11 +273,9 @@ const hasErrors = computed(() => Object.keys(errors.value).length > 0)
         Notes
         <span class="text-[12px] font-sans font-normal text-ink/45">(optional)</span>
       </legend>
-      <Textarea
+      <RichTextEditor
         v-model="values.notes"
-        rows="4"
-        placeholder="Anything the professional should know — special requirements, parking, handover details."
-        class="rounded-xl border-mist bg-bone text-[15px] leading-relaxed"
+        placeholder="Anything the professional should know. Special requirements, parking, handover details."
       />
     </fieldset>
 

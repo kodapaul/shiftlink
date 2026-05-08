@@ -9,6 +9,7 @@ import {
   formatShiftTimes,
 } from '@/helpers/format'
 import { CalendarDays, Clock, DollarSign, MapPin, NotebookPen } from 'lucide-vue-next'
+import RichTextRenderer from '@/components/RichTextRenderer.vue'
 
 // Read-only details for a shift. Used inside the Overview tab on the
 // shift detail page. Each row is a label + value pair so it's easy to scan.
@@ -56,12 +57,12 @@ const shiftLabel = computed(() => SHIFT_TYPE_LABELS[props.shift.shiftType])
       </p>
     </div>
 
-    <div v-if="shift.notes" class="md:col-span-2 space-y-1">
+    <div v-if="shift.notes" class="md:col-span-2 space-y-2">
       <p class="text-[10px] uppercase tracking-[0.18em] text-ink/45">Notes</p>
-      <p class="flex items-start gap-2 text-[14px] leading-relaxed text-ink/80">
-        <NotebookPen class="mt-0.5 h-4 w-4 shrink-0 text-ink/55" />
-        {{ shift.notes }}
-      </p>
+      <div class="flex items-start gap-2">
+        <NotebookPen class="mt-1 h-4 w-4 shrink-0 text-ink/55" />
+        <RichTextRenderer :html="shift.notes" class="flex-1 text-[14px] text-ink/80" />
+      </div>
     </div>
   </div>
 </template>

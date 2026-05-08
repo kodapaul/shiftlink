@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button'
 import ShiftStatusBadge from './ShiftStatusBadge.vue'
 import ApplicationCountBadge from '@/modules/applications/components/ApplicationCountBadge.vue'
 import ClaimedByBadge from '@/modules/applications/components/ClaimedByBadge.vue'
+import RichTextRenderer from '@/components/RichTextRenderer.vue'
 import { useShiftApplications } from '@/modules/applications/composables/useShiftApplications'
 import { MapPin, Pencil, Trash2 } from 'lucide-vue-next'
 
@@ -96,9 +97,11 @@ const posted = computed(() => formatTimeAgo(props.shift.createdAt))
         {{ shift.location }}
       </p>
 
-      <p v-if="shift.notes" class="max-w-prose text-sm leading-relaxed text-ink/65">
-        {{ shift.notes }}
-      </p>
+      <RichTextRenderer
+        v-if="shift.notes"
+        :html="shift.notes"
+        class="max-w-prose text-sm text-ink/70"
+      />
     </div>
 
     <!-- Right: action + footer -->

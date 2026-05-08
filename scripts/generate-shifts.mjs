@@ -136,18 +136,118 @@ const SYDNEY_AREA_COORDS = [
   { lat: -33.9173, lng: 151.0991 }, // Bankstown
 ]
 
-// A small bank of plausible notes — most shifts have none.
+// Notes are stored as HTML (matches the RichTextEditor output). Mix of
+// short paragraphs, medium structured notes (heading + list), and longer
+// multi-section briefings, so the renderer is exercised across the demo.
 const NOTE_BANK = [
-  'Familiar with PRN medication administration preferred.',
-  'Please bring your own scrubs and stethoscope.',
-  'Handover at start of shift — arrive 10 min early.',
-  'High-acuity ward — recent acute experience preferred.',
-  'Aged-care experience required.',
-  'Mental Health First Aid certification required.',
-  'Palliative care experience strongly preferred.',
-  'Bondi parking is limited — public transport recommended.',
-  'Step-down from ICU patient cohort.',
-  'Bring evidence of current immunisations.',
+  // Short paragraphs.
+  '<p>Familiar with PRN medication administration preferred.</p>',
+  '<p>Please bring your own scrubs and stethoscope.</p>',
+  '<p>Handover at start of shift, arrive 10 min early.</p>',
+  '<p>Step-down from ICU patient cohort. Recent acute experience preferred.</p>',
+  '<p>Bondi parking is limited, public transport recommended. Bus 333 stops directly outside.</p>',
+
+  // Medium: heading + short list.
+  '<h3>What you\'ll cover</h3>'
+    + '<ul>'
+      + '<li>4-bed acute observation bay</li>'
+      + '<li>Medication rounds at 0800, 1200, and 1700</li>'
+      + '<li>End-of-shift handover to incoming RN</li>'
+    + '</ul>',
+
+  '<h3>Required</h3>'
+    + '<ul>'
+      + '<li>AHPRA registration current</li>'
+      + '<li>Manual handling within 12 months</li>'
+      + '<li>Mental Health First Aid certificate</li>'
+    + '</ul>'
+    + '<p><strong>Preferred:</strong> recent palliative care experience.</p>',
+
+  '<h3>Arrival</h3>'
+    + '<p>Reception is on <strong>Level 2</strong>. Ask for the charge nurse on arrival, badge collection takes about 5 minutes.</p>'
+    + '<p>Parking validation available at the front desk if you drove in.</p>',
+
+  '<h3>Heads-up</h3>'
+    + '<p>Patient cohort includes one PRN sedation order. Comfort administering it is essential.</p>'
+    + '<p>One patient is on contact precautions, PPE station is at the bay entrance.</p>',
+
+  // Longer multi-section briefings.
+  '<h3>About this shift</h3>'
+    + '<p>Acute medical ward, 6-bed bay. Most patients are post-surgical day 2 to 3, ambulating with assistance.</p>'
+    + '<h3>You\'ll be responsible for</h3>'
+    + '<ul>'
+      + '<li>Hourly observations on bay 3</li>'
+      + '<li>Wound care (one PICC line, one surgical drain)</li>'
+      + '<li>Medication administration including IV antibiotics</li>'
+      + '<li>Discharge planning for two patients due to leave Friday</li>'
+    + '</ul>'
+    + '<p><strong>Handover:</strong> 0700 sharp at the nurses\' station.</p>',
+
+  '<h3>Mental Health Adult Inpatient</h3>'
+    + '<p>16-bed adult acute mental health unit. Mix of voluntary and involuntary admissions under the NSW Mental Health Act.</p>'
+    + '<h3>Required</h3>'
+    + '<ul>'
+      + '<li>Mental Health First Aid certificate</li>'
+      + '<li>De-escalation training within 24 months</li>'
+      + '<li>Recent inpatient mental health experience</li>'
+    + '</ul>'
+    + '<p>Two staff at all times in the seclusion review process. <em>You will not be the sole RN on shift.</em></p>',
+
+  '<h3>Aged Care, Memory Support</h3>'
+    + '<p>Dedicated dementia wing, 12 residents. Established care plans for each, focus is on continuity and gentle redirection.</p>'
+    + '<ul>'
+      + '<li>Medication round at 0800 (Webster packs)</li>'
+      + '<li>Mealtime support 0830, 1230, 1730</li>'
+      + '<li>Sundowning management 1600 onwards</li>'
+    + '</ul>'
+    + '<p><strong>Familiarity with the Bondi Memory Support model</strong> is a plus but not required, the team will walk you through it.</p>',
+
+  '<h3>Maternity, Birthing Suite</h3>'
+    + '<p>Active labour ward, two birthing rooms. You\'ll be paired with the senior midwife on shift.</p>'
+    + '<h3>Bring</h3>'
+    + '<ul>'
+      + '<li>Stethoscope</li>'
+      + '<li>Pinard or doppler if you have a preferred unit</li>'
+      + '<li>Closed-toe shoes (theatre may be needed)</li>'
+    + '</ul>'
+    + '<p>Lactation consultant on call from 0800.</p>',
+
+  '<h3>Palliative Care wing</h3>'
+    + '<p>8 patients, all in the active phase of palliative care. The pace is slower than acute, the emotional load is higher.</p>'
+    + '<p><strong>What we value:</strong> gentleness, patience, comfort with grief.</p>'
+    + '<ul>'
+      + '<li>Symptom management (pain, nausea, dyspnoea)</li>'
+      + '<li>Family support and presence</li>'
+      + '<li>End-of-life care including verification of death</li>'
+    + '</ul>'
+    + '<p>If this is your first palliative shift with us, the charge nurse will spend the first 30 min orientating you.</p>',
+
+  '<h3>Heads-up</h3>'
+    + '<p>This is a <strong>night shift</strong> covering the post-anaesthesia care unit. Lighter caseload than days but you\'re the senior RN on the floor.</p>'
+    + '<ul>'
+      + '<li>1:4 ratio overnight</li>'
+      + '<li>Nurse-in-charge takes the bleep</li>'
+      + '<li>Fresh post-op patients arrive from theatre until ~2200</li>'
+    + '</ul>',
+
+  '<h3>Outpatients clinic</h3>'
+    + '<p>Pre-admission clinic, mostly elective surgical patients. Day shift, predictable pace.</p>'
+    + '<ul>'
+      + '<li>Vital signs and basic obs on each patient</li>'
+      + '<li>Medication reconciliation</li>'
+      + '<li>Pre-op education and consent witnessing</li>'
+    + '</ul>'
+    + '<p>Standard business attire under scrubs preferred, this is a public-facing clinic.</p>',
+
+  '<h3>Emergency Bay 4</h3>'
+    + '<p>Resus bay during the late shift. Fast-paced, expect 4 to 6 active presentations through your shift.</p>'
+    + '<p><strong>Required:</strong></p>'
+    + '<ul>'
+      + '<li>Advanced Life Support current</li>'
+      + '<li>ED experience within last 12 months</li>'
+      + '<li>Comfortable running primary assessment independently</li>'
+    + '</ul>'
+    + '<p>Senior consultant on the floor 1500 to 2300.</p>',
 ]
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -241,8 +341,9 @@ for (let i = 0; i < SHIFT_COUNT; i++) {
     shift.location = pickRandom(LOCATION_HINTS)
   }
 
-  // ~25% of shifts get a note.
-  if (Math.random() < 0.25) {
+  // ~55% of shifts get a note. Higher than before since the notes are now
+  // structured HTML and they make the demo feel populated.
+  if (Math.random() < 0.55) {
     shift.notes = pickRandom(NOTE_BANK)
   }
 
