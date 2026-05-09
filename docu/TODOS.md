@@ -150,18 +150,18 @@ The full editorial landing replaces the stub. All sections live in a single `Hom
 
 ---
 
-## Phase E — Deploy
+## Phase E — Deploy  ✅ DONE
 
-- [ ] `git init` + first commit (already done if user pushed)
-- [ ] Push to GitHub (public)
-- [ ] `firebase init hosting` with `dist/` + SPA rewrite
-- [ ] `npm run build && firebase deploy`
-- [ ] Add live URL to README.md
+- [x] `firebase.json` + `.firebaserc` wired for multi-site hosting under the existing `pdv-website-7469f` project. Target alias `shiftlink` → site `shiftlink-81e16`. Standard SPA rewrite (`** → /index.html`).
+- [x] `index.html` polished — title, meta description, theme-color (forest-deep), Open Graph tags so social shares render with proper preview.
+- [x] Page transitions — subtle fade + 8px translate at every `<RouterView>` (App.vue + PublicLayout + FacilityLayoutView), keyed on `route.path` so hash anchor nav doesn't remount, with a `prefers-reduced-motion` fallback to a 150ms opacity-only fade.
+- [x] First deploy: `npm run build && firebase deploy --only hosting:shiftlink`
+- [x] Live URL added to README: https://shiftlink-81e16.web.app
 
 ---
 
 ## Phase F — Submission
 
-- [ ] README "what's next" note (3–5 sentences)
-- [ ] Final commit + push
-- [ ] Submit GitHub link + live URL + next-steps note to the brief sender
+- [x] README "what's next" note (5-sentence paragraph under "What I'd do next (one more day)")
+- [ ] `git init` already done (repo exists). Push final commit to a public GitHub repo.
+- [ ] Submit GitHub link + live URL + next-steps note to the brief sender.

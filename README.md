@@ -4,7 +4,7 @@ A two-sided marketplace prototype for healthcare shift coverage. Facilities post
 
 > Built as a take-home exercise. Eucalyptus.health-inspired visual register; upaged.com-inspired information architecture.
 
-**Live URL:** _to be added after first deploy_
+**Live URL:** [https://shiftlink-81e16.web.app](https://shiftlink-81e16.web.app)
 
 ---
 
@@ -38,7 +38,8 @@ Both sides of the marketplace are functional end-to-end, plus the public marketi
 | Persisted to `localStorage` via Pinia plugin (CRUD + edits survive reload) | ✅ Complete |
 | Contact form with Sydney map + thank-you transition (no real submission) | ✅ Complete |
 | Hash-anchor navigation (header About / Contact scrolls home page sections) | ✅ Complete |
-| Production deploy | ⏳ Pending |
+| Page transitions (subtle fade + slide on every route change, reduced-motion-aware) | ✅ Complete |
+| Production deploy on Firebase Hosting (multi-site under `pdv-website-7469f`) | ✅ Complete |
 
 ## What's in here
 
@@ -61,7 +62,7 @@ Both sides of the marketplace are functional end-to-end, plus the public marketi
 | State | Pinia + `pinia-plugin-persistedstate` |
 | Map | Leaflet + CartoDB Voyager tiles (no API key) |
 | Date / time | shadcn-vue Calendar + `@internationalized/date` for the date picker; custom 12-hour time picker |
-| Hosting (planned) | Firebase Hosting (SPA) |
+| Hosting | Firebase Hosting (SPA, multi-site target) |
 
 See [docu/CONFIGURATIONS.md](docu/CONFIGURATIONS.md) for the architectural rules and folder layout, and [docu/BRAND.md](docu/BRAND.md) for the design system.
 
@@ -146,22 +147,14 @@ Generators live in `scripts/` and read referenced records out of the seed JSON s
 
 The Pinia stores persist to `localStorage`, so any edits, posts, deletes, accepts persist across reload. To reset to fresh seed data: open DevTools → Application → Storage → Clear. Next reload will re-hydrate from the JSON.
 
-## Tradeoffs and decisions
+### Deploying
 
-- **Vue over React.** Familiarity wins on a short timeline. Both meet the requirements equally well.
-- **SPA, not SSR.** No SEO requirement; auth-gated views don't benefit from server rendering.
-- **`localStorage` over a real backend.** The brief explicitly blesses mock data. Time spent setting up Supabase / Firebase Auth is time not spent on the design execution that's weighted equally with functionality.
-- **Pinia + `pinia-plugin-persistedstate`.** Replaces ~15 lines of manual `JSON.parse`/`stringify` per piece of persisted state with `persist: true`. Cross-store side effects (e.g. accepting an application flips the linked shift to claimed) live in the store, not in components.
-- **shadcn-vue, heavily themed.** Used for components where accessibility is hard to get right (Dialog, Popover, Select, Tabs, Sidebar, Sheet). Custom components (TimePicker, ShiftMap, status pills) are hand-rolled. CSS variables in `main.css` override the shadcn defaults to a vibrant eucalyptus palette: forest, cream, bone, ink, marigold, blush, sage, mist.
-- **Editorial typography over SaaS density.** Type pairing (Fraunces + Inter), generous radius (12–24px), no drop shadows.
-- **Single-facility model.** Multi-facility is over-modeling for a prototype. Shifts implicitly belong to the one facility; their per-shift `location` + `lat`/`lng` reflect that the facility serves multiple physical sites.
-- **Cards over tables.** More responsive, more visually flexible, aligned with the editorial language.
-- **Leaflet + CartoDB Voyager** instead of Google Maps / Mapbox. No API key, no quota, soft tiles that match the brand palette.
-- **Custom TimePicker** instead of native `<input type="time">`. The native picker is browser-inconsistent and doesn't match the rest of the form's polish.
+Hosted on Firebase Hosting as a separate site under an existing project (`pdv-website-7469f` → site `shiftlink-81e16`). Wiring lives in `firebase.json` (target alias `shiftlink`) and `.firebaserc`. To redeploy:
 
-## What I'd do next (one more day)
-
-If I had another day on this prototype, I'd swap `localStorage` for Firebase Auth + Firestore with security rules so sessions and posts survive across devices instead of being browser-local. I'd geocode free-text shift locations on submit (Nominatim or Google Geocoding) so user-posted shifts pin on the same map as the seeded ones — currently new shifts get a randomised Sydney coordinate. I'd write tests around the highest-risk flows: accept/decline cross-store mutations, edit-shift round-trip, registration validation. I'd run a full keyboard / focus-ring audit and add per-route page titles + a favicon. And I'd commission real photography for the landing — the For-Professionals and For-Facilities sections currently use a mix of stock photography and AI-generated imagery, which works for a prototype but reads as placeholder-ish in places.
+```bash
+npm run build
+firebase deploy --only hosting:shiftlink
+```
 
 ## Documentation
 

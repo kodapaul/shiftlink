@@ -355,14 +355,30 @@ Route-level shells that wrap groups of routes with shared chrome (header, sideba
 
 ### PublicLayout.vue
 
-Wraps `/`, `/about`, `/contact`, and `/professional` with `PublicHeader` + `<RouterView />`. Children render below the sticky header on a `bg-cream` page.
+Wraps `/`, `/about`, `/contact`, `/professional`, and `/shifts` with `PublicHeader` + `<RouterView v-slot>`. Children render below the sticky header on a `bg-cream` page.
+
+The inner `<RouterView>` is wrapped with `<Transition name="page" mode="out-in">` keyed on `route.path` so within-layout route swaps fade-and-slide. Hash navigation (`/#about`, `/#contact`) doesn't remount the page — only real route changes transition. See "Page transitions" below.
 
 Routes intentionally outside this layout (so they keep their own chrome):
 - `/login`, `/register`, `/staff/login`, `/staff/registration`, `/staff/onboarding` — auth views, self-contained editorial two-pane layout
 - `/facility/*` — uses the forest-green sidebar shell (`FacilityLayoutView`)
 - `/404` — clean error page, no header
 
-When new public-side views are added (real landing in Phase D, future shift-search, etc.), register them as children of this layout.
+### Page transitions
+
+Wrapped around every `<RouterView>` in the app: `App.vue` (cross-layout swaps), `PublicLayout.vue` (within public layout), and `FacilityLayoutView.vue` (within facility portal). Pattern:
+
+```vue
+<RouterView v-slot="{ Component, route }">
+  <Transition name="page" mode="out-in">
+    <component :is="Component" :key="route.path" />
+  </Transition>
+</RouterView>
+```
+
+CSS lives in `src/assets/main.css` under `.page-enter-active` / `.page-leave-active`: 250ms ease on `opacity` + `transform`, with a small vertical translate (enter from `+8px`, leave to `-4px`). `mode="out-in"` runs leave-then-enter so we never see two pages stacked. A `@media (prefers-reduced-motion: reduce)` block falls back to a 150ms opacity-only fade with no movement.
+
+Keyed on `route.path` rather than `route.fullPath` so hash navigation (used by the public header's About / Contact items) doesn't remount the home page mid-scroll.
 
 ---
 
