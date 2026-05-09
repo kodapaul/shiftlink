@@ -2,8 +2,6 @@
 
 A two-sided marketplace prototype for healthcare shift coverage. Facilities post shifts, professionals apply, facility staff accepts the right applicant — front-end only, no real backend.
 
-> Built as a take-home exercise. Eucalyptus.health-inspired visual register; upaged.com-inspired information architecture.
-
 **Live URL:** [https://shiftlink-81e16.web.app](https://shiftlink-81e16.web.app)
 
 ---
