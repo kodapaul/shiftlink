@@ -10,7 +10,19 @@ A two-sided marketplace prototype for healthcare shift coverage. Facilities post
 
 ## Status
 
-This prototype currently focuses on the **facility-side experience** end-to-end. The professional-side surfaces (shift board, claim/apply UX) and the public landing page are scoped but not yet built.
+Both sides of the marketplace are functional end-to-end, plus the public marketing landing. The remaining gap is deployment.
+
+### Brief requirements
+
+| Brief requirement | Where it lives | Status |
+|---|---|---|
+| Public landing page with dual CTA, trust signals, value props per audience | `src/views/HomeView.vue` | ✅ Complete |
+| Sign-up flow that branches by user type | `/register` (professional), `/staff/registration` (facility) | ✅ Complete |
+| Authenticated shift board with role / facility / date / time / rate per card + filters | `/shifts` (`src/modules/shifts/views/ShiftsBrowseView.vue`) | ✅ Complete |
+| Shift claim with confirmation state | `ShiftApplyDialog` + `applications` store | ✅ Complete |
+| Responsive design | `375px` audited across every view | ✅ Complete |
+
+### Bonus surfaces
 
 | Area | Status |
 |---|---|
@@ -19,18 +31,20 @@ This prototype currently focuses on the **facility-side experience** end-to-end.
 | Per-shift application accept/decline (auto-claims shift, auto-declines competitors) | ✅ Complete |
 | Cross-shift applications triage view | ✅ Complete |
 | Sydney shift map with split list + click-to-fly | ✅ Complete |
-| Search + status filter on shift list | ✅ Complete |
+| Professional dashboard with Profile / Applications / Schedule tabs + dedicated edit page | ✅ Complete |
+| Rich-text notes (Tiptap) + sanitized renderer for shift descriptions | ✅ Complete |
 | Custom 12-hour AM/PM time picker, shadcn-vue date picker, themed tabs / sheets / dialogs | ✅ Complete |
 | Mock data for 1 facility · 5 staff · 10 professionals · 121 shifts · ~260 applications | ✅ Complete |
 | Persisted to `localStorage` via Pinia plugin (CRUD + edits survive reload) | ✅ Complete |
-| Public landing page with dual CTA | 🚧 Not started |
-| Real signup flow | 🚧 Not started — currently auto-impersonates the demo facility staff |
-| Professional shift board (`/shifts`) | 🚧 Not started |
-| Professional apply-to-shift flow | 🚧 Not started |
+| Contact form with Sydney map + thank-you transition (no real submission) | ✅ Complete |
+| Hash-anchor navigation (header About / Contact scrolls home page sections) | ✅ Complete |
+| Production deploy | ⏳ Pending |
 
 ## What's in here
 
-- **Facility portal** at `/facility` — Sarah Whitfield (Nurse Manager at St. Vincent's Aged Care, Bondi) is the auto-impersonated demo account. Sidebar nav: All posted shifts · Post a shift · Applications · Shift map.
+- **Public landing** at `/` — editorial cream-on-cream layout with a hero, For-Professionals split, For-Facilities mirrored split, six-card testimonials with brand-tinted variants, About bento with stats, Contact form + Leaflet map, and a closing CTA + footer.
+- **Professional side** at `/professional` — three-tab dashboard (Profile, Applications, Schedule) + dedicated profile-edit at `/professional/edit`. Browse/apply via `/shifts`.
+- **Facility portal** at `/facility` — Sidebar nav: All posted shifts · Post a shift · Applications · Shift map. Five demo staff at the seeded facility (St. Vincent's Aged Care, Bondi).
 - **Single-facility model.** Every shift implicitly belongs to the one demo facility, but each shift carries its own optional `location` and `lat`/`lng` to reflect that real facilities have many physical sites.
 - **Application lifecycle** — pending → accepted (which auto-claims the shift and auto-declines competing pendings) or → declined. Cross-store side effects centralized in the applications store.
 
@@ -95,7 +109,16 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:5176/. The root path redirects into the facility portal at `/facility` since the public landing page isn't built yet.
+Then open http://localhost:5176/. The root path renders the public landing page; the header has Login buttons for both audiences.
+
+### Demo accounts
+
+Mock auth — any password ≥ 6 chars works. To sign in quickly:
+
+- **Professional** at `/login` — try `maya.patel@example.com` (the login page lists 5 demo professionals to copy from).
+- **Facility staff** at `/staff/login` — try `sarah@stvincents-bondi.au` (Nurse Manager). Other seeded staff are listed inline.
+
+New accounts created via the registration flows persist alongside the seed accounts in `localStorage`.
 
 ### Type-check, lint, build
 
@@ -136,17 +159,9 @@ The Pinia stores persist to `localStorage`, so any edits, posts, deletes, accept
 - **Leaflet + CartoDB Voyager** instead of Google Maps / Mapbox. No API key, no quota, soft tiles that match the brand palette.
 - **Custom TimePicker** instead of native `<input type="time">`. The native picker is browser-inconsistent and doesn't match the rest of the form's polish.
 
-## What's next (post-prototype)
+## What I'd do next (one more day)
 
-If this were graduating to a real product:
-
-- Replace `localStorage` with Firebase Auth + Firestore so state survives across devices, with security rules.
-- Build the **public landing page** with dual CTA (the most-graded surface, currently scoped but not built).
-- Build the **professional shift board** at `/shifts` and apply-to-shift flow — reusing the existing map view and applicant components.
-- **Real signup** with branched fields per audience (currently the demo auto-impersonates Sarah).
-- **Geocoding** of free-text shift locations on submit (Nominatim free, or Google Geocoding) so user-posted shifts join the seeded ones on the map.
-- **Tests** around the highest-risk flows — accept/decline (cross-store mutation), edit-shift round-trip, signup validation.
-- **Real photography / illustration** for the landing page once it exists.
+If I had another day on this prototype, I'd swap `localStorage` for Firebase Auth + Firestore with security rules so sessions and posts survive across devices instead of being browser-local. I'd geocode free-text shift locations on submit (Nominatim or Google Geocoding) so user-posted shifts pin on the same map as the seeded ones — currently new shifts get a randomised Sydney coordinate. I'd write tests around the highest-risk flows: accept/decline cross-store mutations, edit-shift round-trip, registration validation. I'd run a full keyboard / focus-ring audit and add per-route page titles + a favicon. And I'd commission real photography for the landing — the For-Professionals and For-Facilities sections currently use a mix of stock photography and AI-generated imagery, which works for a prototype but reads as placeholder-ish in places.
 
 ## Documentation
 

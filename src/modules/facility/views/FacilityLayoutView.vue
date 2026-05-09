@@ -7,22 +7,19 @@
  * behavior on desktop and converts to an off-canvas drawer on mobile).
  */
 import { onBeforeMount } from 'vue'
-import { useAuthStore } from '@/stores/auth'
 import { useShiftsStore } from '@/stores/shifts'
 import { useApplicationsStore } from '@/stores/applications'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import FacilitySidebar from '../components/FacilitySidebar.vue'
 
-const auth = useAuthStore()
 const shifts = useShiftsStore()
 const applications = useApplicationsStore()
 
-// Prototype: if no one is logged in, sign in as the demo facility staff
-// (Sarah Whitfield) so the dashboard isn't blocked by a not-yet-built signup.
-// Also hydrate every store the facility portal reads from, so cards / counts
-// render correctly on first mount and on direct deep-link visits.
+// Auth is enforced by the router guard — by the time this layout mounts,
+// a facility-staff session is guaranteed. We just hydrate the data stores
+// the portal reads from so cards / counts render on first mount and on
+// direct deep-link visits.
 onBeforeMount(() => {
-  if (!auth.isFacilityStaff) auth.loginAsFacility()
   shifts.hydrateIfEmpty()
   applications.hydrateIfEmpty()
 })
@@ -40,7 +37,12 @@ onBeforeMount(() => {
         <span class="font-serif text-lg font-semibold tracking-tight text-ink">ShiftLink</span>
       </header>
 
-      <RouterView />
+      <!-- Within-layout transition for facility-portal route swaps. -->
+      <RouterView v-slot="{ Component, route }">
+        <Transition name="page" mode="out-in">
+          <component :is="Component" :key="route.path" />
+        </Transition>
+      </RouterView>
     </SidebarInset>
   </SidebarProvider>
 </template>

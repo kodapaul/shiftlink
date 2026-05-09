@@ -128,7 +128,15 @@ function escapeHtml(s: string): string {
   )
 }
 
-const pinnableShifts = computed(() => props.shifts.filter((s) => s.lat != null && s.lng != null))
+// `Number.isFinite` (not just `!= null`) so `NaN` lat/lng — which can sneak
+// in through stale localStorage or hand-edited seed data — gets filtered
+// out. Without this guard, NaN coords pass the null check, get a marker,
+// and crash `flyTo` with "Invalid LatLng object: (NaN, NaN)".
+const pinnableShifts = computed(() =>
+  props.shifts.filter(
+    (s) => Number.isFinite(s.lat) && Number.isFinite(s.lng),
+  ),
+)
 
 function renderPins() {
   if (!map || !markersLayer) return
@@ -147,7 +155,12 @@ function focusSelected(id: string | null | undefined) {
   if (!id || !map) return
   const marker = markersById.get(id)
   if (!marker) return
-  map.flyTo(marker.getLatLng(), props.selectedZoom, { animate: true, duration: 0.7 })
+  // Defensive: if the marker somehow has NaN/Inf coords (stale localStorage,
+  // hand-edited seed, etc.), `flyTo` throws. Skip silently — the row in the
+  // list is still selectable, we just can't pin it on the map.
+  const ll = marker.getLatLng()
+  if (!Number.isFinite(ll.lat) || !Number.isFinite(ll.lng)) return
+  map.flyTo(ll, props.selectedZoom, { animate: true, duration: 0.7 })
   // Wait for the fly animation, then open the popup so it lands centered.
   marker.openPopup()
 }

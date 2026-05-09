@@ -75,6 +75,7 @@ Eucalyptus.health is **vibrant, not muted** — bold dark-green hero blocks alte
 | Token | Hex | Usage |
 |---|---|---|
 | `forest` | `#043F2E` | Primary brand. Hero backgrounds, primary buttons in cream contexts, headings on cream. |
+| `forest-deep` | `#003829` | Deeper variant of forest, calibrated to match the auth-screen illustrations' background. Use *only* when a forest surface needs to read as one continuous plane with an illustration drawn on the same hex (currently: the left card on `/staff/login` and `/staff/registration`). Otherwise prefer `forest`. |
 | `cream` | `#F0EDE3` | Page background — warm cream, never pure white. |
 | `bone` | `#FAF6EE` | Card surfaces — slightly lighter than `cream` so cards feel raised without shadow. |
 | `ink` | `#1A1A1A` | Primary text on light surfaces. Soft black, not `#000`. |
@@ -123,6 +124,19 @@ Editorial layouts breathe. Sections use big vertical padding.
 - **Max content width:** 1200px (`max-w-screen-xl`) for most sections, 720px (`max-w-3xl`) for prose-heavy sections.
 - **Asymmetric is allowed and encouraged.** Magazine-style layouts (e.g., headline left + image right at unequal widths) feel more editorial than perfectly symmetric grids.
 - **Mobile-first.** Design the mobile layout first, then upgrade for `md:` and `lg:` breakpoints.
+
+### Standard page chrome by route group
+
+Page-level views inside the same route group use a shared shell so navigating between them feels like one app, not a stack of disjoint pages.
+
+| Route group | Max width | Horizontal padding | Vertical padding |
+|---|---|---|---|
+| `/professional/*` (under `PublicLayout`) | `max-w-screen-2xl` (1536px) | `px-6 sm:px-10 lg:px-12` | `py-12 lg:py-16` (use `pb-32` when there's a sticky save bar) |
+| `/facility/*` (under `FacilityLayoutView` sidebar shell) | feature-defined per view | mostly `px-6 md:px-12` | mostly `pt-10 md:pt-14 pb-24` |
+| Public marketing pages (`/`, `/about`, `/contact`) | feature-defined per view; lean editorial | `px-6 sm:px-10` | generous (`py-24` to `py-32`) |
+| Auth views (`/login`, `/register`, `/staff/...`) | self-contained two-pane editorial | locked at viewport `lg:h-dvh` | n/a |
+
+When adding a new route, reuse the chrome from the same group rather than inventing dimensions. Consistency at the page-shell level beats expressive variation here.
 
 ## Component philosophy
 
@@ -218,6 +232,19 @@ Document any component-level overrides in DOCUMENTATIONS.md so they are not acci
 - **Avoid stock-photo healthcare imagery.** It reads as generic.
 - **Prefer:** abstract photography (textures, hands at work, nature), editorial portraits if any, or no imagery at all.
 - **If no good imagery is available, lean harder on typography.** A well-set headline beats a bad photo.
+
+### Auth-screen illustrations
+
+The login + registration screens use a paired set of flat-vector illustrations (Storyset / Open Doodles register). Rules for that set:
+
+- **Background is solid `forest-deep` (`#003829`)**, not `forest`. The host card on the page uses the same hex so the illustration's bounding box disappears.
+- **Palette borrows from the brand:** character body / scrubs in `blush`, accents in `marigold` and `sage`, paper/screen highlights in `cream`, line work in near-black green.
+- **No shadows, no gradients, no textures.** Pure flat colors.
+- **Wide composition** (3:2 landscape or wider) so the figure occupies the left third and props spread across the right two-thirds — fits the wide left card without looking stranded.
+
+Files live in `src/assets/illustrations/` (`auth-login.png`, `auth-registration.png`). Imported via Vite so the build emits hashed asset URLs.
+
+If we add more illustrated surfaces later (a public landing hero, an empty-state, etc.), they should follow the same rules so the set reads as one family.
 
 ## Tone of voice
 

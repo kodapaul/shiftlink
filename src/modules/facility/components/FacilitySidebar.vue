@@ -7,7 +7,7 @@
  * not lorem-ipsum'd.
  */
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import {
   Sidebar,
   SidebarContent,
@@ -24,8 +24,6 @@ import {
 import { useAuthStore } from '@/stores/auth'
 import { useShiftsStore } from '@/stores/shifts'
 import { useApplicationsStore } from '@/stores/applications'
-import facilitiesData from '@/data/facilities.json'
-import type { Facility } from '@/modules/facility/types'
 import { STAFF_POSITION_LABELS } from '@/modules/facility/enums'
 import {
   ArrowLeftRight,
@@ -36,18 +34,21 @@ import {
   PlusCircle,
 } from 'lucide-vue-next'
 
-const facilities = facilitiesData as Facility[]
-
 const route = useRoute()
+const router = useRouter()
 const auth = useAuthStore()
 const shifts = useShiftsStore()
 const applications = useApplicationsStore()
 
-const facility = computed<Facility | null>(() =>
-  auth.facilityId ? facilities.find((f) => f.id === auth.facilityId) ?? null : null,
-)
-
+// Read both records from the auth store — it already merges seed + any
+// facility/staff registered at runtime.
+const facility = computed(() => auth.currentFacility)
 const staff = computed(() => auth.currentFacilityStaff)
+
+function handleLogout() {
+  auth.logout()
+  router.push('/staff/login')
+}
 
 const initials = computed(() => {
   const name = staff.value?.name ?? ''
@@ -193,7 +194,7 @@ const navItems = computed(() => [
         <button
           type="button"
           class="group inline-flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-[12px] text-cream/60 transition-colors hover:bg-[var(--forest-tint-1)] hover:text-cream"
-          @click="auth.logout"
+          @click="handleLogout"
         >
           <span class="inline-flex items-center gap-2">
             <ArrowLeftRight class="h-3.5 w-3.5" />

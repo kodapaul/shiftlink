@@ -110,14 +110,19 @@ function statusLabel(shift: Shift): string {
     </header>
 
     <!-- ── Split view: list left, map right ─────────────────────────── -->
+    <!--
+      The fixed 70vh height only applies at lg+. On mobile the grid
+      collapses to one column with two stacked rows; each child gets its
+      own mobile height (`h-[55vh]` for the list, `h-[60vh]` for the map)
+      so neither squashes the other and the page scrolls naturally.
+    -->
     <section class="flex-1 px-6 pb-12 md:px-12">
       <div
-        class="mx-auto grid max-w-7xl gap-4 lg:grid-cols-[380px_1fr] lg:gap-6"
-        style="height: 70vh; min-height: 520px"
+        class="mx-auto grid max-w-7xl gap-4 lg:h-[70vh] lg:min-h-[520px] lg:grid-cols-[380px_1fr] lg:gap-6"
       >
         <!-- ── List ─────────────────────────────────────────────────── -->
         <aside
-          class="flex h-full flex-col overflow-hidden rounded-2xl border border-mist bg-bone"
+          class="flex h-[55vh] flex-col overflow-hidden rounded-2xl border border-mist bg-bone lg:h-full"
         >
           <header class="border-b border-mist px-5 pt-4 pb-3">
             <p class="text-[10px] uppercase tracking-[0.22em] text-ink/45">
@@ -191,7 +196,12 @@ function statusLabel(shift: Shift): string {
         </aside>
 
         <!-- ── Map ──────────────────────────────────────────────────── -->
-        <div class="h-full min-h-[60vh] lg:min-h-0">
+        <!-- `isolate` (= isolation: isolate) creates a new stacking context
+             so Leaflet's internal z-indices (markers up to 600, popups
+             700, controls 800) stay scoped to this wrapper. Without it,
+             the map's elements bleed through the sidebar drawer overlay
+             on mobile when the sidebar is opened. -->
+        <div class="isolate h-[60vh] min-h-[420px] overflow-hidden rounded-2xl lg:h-full lg:min-h-0">
           <ShiftMap
             :shifts="visibleShifts"
             :selected-id="selectedId"

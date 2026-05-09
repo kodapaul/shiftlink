@@ -21,6 +21,7 @@ import {
   emptyPostShiftForm,
   validatePostShiftForm,
   buildShiftDraft,
+  randomSydneyCoords,
 } from '../services/PostShiftForm'
 import { useShiftsStore } from '@/stores/shifts'
 import { useAuthStore } from '@/stores/auth'
@@ -96,7 +97,11 @@ export function usePostShiftForm(options: UsePostShiftFormOptions = {}) {
       return updated
     }
 
-    const created = shiftsStore.create(draft)
+    // New shifts get random Sydney coords so they show up as pins on the
+    // map. Edits above preserve whatever coords already exist on the
+    // record — `buildShiftDraft` doesn't include lat/lng, so the partial
+    // update never overwrites them.
+    const created = shiftsStore.create({ ...draft, ...randomSydneyCoords() })
     status.value = 'success'
     return created
   }

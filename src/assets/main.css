@@ -22,6 +22,7 @@
 
     /* Brand tokens (also exposed as Tailwind utilities — bg-forest, text-cream, etc.) */
     --color-forest: var(--forest);
+    --color-forest-deep: var(--forest-deep);
     --color-cream: var(--cream);
     --color-bone: var(--bone);
     --color-ink: var(--ink);
@@ -74,6 +75,8 @@
 :root {
     /* Brand palette */
     --forest: #043f2e; /* deep forest green — primary brand, hero bg */
+    --forest-deep: #003829; /* darker forest — matches the auth illustrations' bg so the
+                                   image and the card surface read as one continuous plane */
     --cream: #f0ede3; /* warm cream — page background */
     --bone: #faf6ee; /* lighter cream — card backgrounds */
     --ink: #1a1a1a; /* primary text */
@@ -157,4 +160,37 @@
     }
 }
 
+/* Page transitions — applied via <Transition name="page" mode="out-in">
+ * around <RouterView v-slot> in App.vue and each layout shell.
+ *
+ * Subtle fade with a small vertical translate so route swaps feel
+ * intentional rather than abrupt. `mode="out-in"` runs the leave
+ * transition before the enter transition, so we never see two pages
+ * stacked. Hash navigation (`/#about`) is excluded by keying the
+ * inner <component> on `route.path` — only real route changes
+ * trigger the transition. */
+.page-enter-active,
+.page-leave-active {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.page-enter-from {
+    opacity: 0;
+    transform: translateY(8px);
+}
+.page-leave-to {
+    opacity: 0;
+    transform: translateY(-4px);
+}
 
+/* Honour reduced-motion preferences — fall back to a quick fade
+ * without any movement. */
+@media (prefers-reduced-motion: reduce) {
+    .page-enter-active,
+    .page-leave-active {
+        transition: opacity 0.15s ease;
+    }
+    .page-enter-from,
+    .page-leave-to {
+        transform: none;
+    }
+}

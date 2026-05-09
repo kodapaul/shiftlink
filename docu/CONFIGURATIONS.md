@@ -107,17 +107,24 @@ The repo follows a **modular-by-feature** layout. Each feature/module owns every
 ```
 src/
   assets/                  # global CSS, fonts, images
-  components/              # shared, reusable components (Button, Input, Card, NavBar, etc.)
+  components/              # shared, reusable components (Button, Input, Card, PublicHeader, etc.)
   composables/             # shared composables (useAuth, useClaims, etc.)
   helpers/                 # general utility functions (formatDate, formatCurrency, etc.)
   data/                    # mock data (shifts.ts, facilities.ts)
+  layouts/                 # route-level layout shells that wrap groups of routes (PublicLayout)
+  views/                   # app-shared route views that aren't owned by a feature module (HomeView, AboutView, ContactView, NotFoundView)
   router/
     index.ts
   stores/                  # shared Pinia stores (auth, shifts, applications)
   modules/                 # feature modules AND domain modules — each follows the structure below
-    user/                  # AUTH-FOCUSED domain module — owns User base type + UserType discriminator
-      types/
-      enums/
+    user/                  # AUTH-FOCUSED domain module — owns User base type, UserType discriminator,
+      types/                # AND auth flows (login, registration, onboarding)
+      enums/                # File names are prefixed by audience (Staff…, Professional…) so the
+      services/             # whole module stays flat — no sub-feature folders.
+      composables/
+      components/
+      views/
+      # Phase B adds Professional…Form.ts / useProfessional…Form.ts / etc. alongside the staff files.
     professional/          # owns Professional entity + Role enum (Phase B will add /shifts UI here)
       types/
       enums/
@@ -128,9 +135,13 @@ src/
       composables/
       components/
       views/
-    shifts/                # owns Shift entity + ShiftStatus / Urgency / ShiftType enums
-      types/
+    shifts/                # domain + feature: owns Shift entity + ShiftStatus / Urgency / ShiftType enums,
+      types/                #   plus the professional shift browse + apply experience at /shifts
       enums/
+      services/
+      composables/
+      components/
+      views/
     applications/          # owns ShiftApplication entity + ApplicationStatus enum + UI primitives
       types/
       enums/
@@ -171,7 +182,11 @@ Each domain entity lives in the module that primarily owns it. Identity / auth c
 | `User` (base type — has `type: UserType` discriminator field) | `src/modules/user/types/User.ts` |
 | `UserType` (discriminator: `'professional' \| 'facility_staff'` — used by auth, routing, signup) | `src/modules/user/enums/UserType.ts` |
 | `Professional` entity | `src/modules/professional/types/Professional.ts` |
+| `WorkingWithChildrenCheck` (compound type used by `Professional.wwcc`) | `src/modules/professional/types/Professional.ts` |
 | `Role` enum (RN, EN, AIN, …) | `src/modules/professional/enums/Role.ts` |
+| `Specialty` enum (clinical practice areas) | `src/modules/professional/enums/Specialty.ts` |
+| `RightToWork` enum (Citizen / PR / VisaHolder) | `src/modules/professional/enums/RightToWork.ts` |
+| `ProfessionalProfileForm…` types + `ProfessionalProfileCompleteness` | `src/modules/professional/types/ProfessionalProfileForm.ts` |
 | `Facility` entity | `src/modules/facility/types/Facility.ts` |
 | `FacilityStaff` entity | `src/modules/facility/types/FacilityStaff.ts` |
 | `FacilityType` enum | `src/modules/facility/enums/FacilityType.ts` |
@@ -182,24 +197,30 @@ Each domain entity lives in the module that primarily owns it. Identity / auth c
 | `ShiftStatus` / `Urgency` / `ShiftType` enums | `src/modules/shifts/enums/` |
 | `ShiftApplication` entity | `src/modules/applications/types/ShiftApplication.ts` |
 | `ApplicationStatus` enum | `src/modules/applications/enums/ApplicationStatus.ts` |
+| `StaffLoginFormValues` / `Errors` / `Status` | `src/modules/user/types/StaffLoginForm.ts` |
+| `StaffRegistrationFormValues` / `Errors` / `Status` | `src/modules/user/types/StaffRegistrationForm.ts` |
+| `ProfessionalLoginFormValues` / `Errors` / `Status` | `src/modules/user/types/ProfessionalLoginForm.ts` |
+| `ProfessionalRegistrationFormValues` / `Errors` / `Status` | `src/modules/user/types/ProfessionalRegistrationForm.ts` |
+| `OnboardingStep` enum | `src/modules/user/enums/OnboardingStep.ts` |
 
 **No top-level `src/types/` or `src/enums/`.** Modular all the way down.
 
 ### What goes in `user/`?
 
-The `user` module is **auth-focused** — its job is "who is logged in and what can they do at the routing level." Things that belong here:
+The `user` module is **auth-focused** — its job is "who is logged in and what can they do at the routing level," plus the auth-flow UI itself. Things that belong here:
 
 - `User` — the base shape every kind of human user shares (with `type: UserType` discriminator field)
 - `UserType` — the enum used by auth state, route guards, signup branching, and the entity `type` field
+- **All auth flows** — login, registration, onboarding for both audiences. Files live directly under the standard `types/`, `enums/`, `services/`, `composables/`, `components/`, `views/` folders, named with an audience prefix (`StaffLoginForm.ts`, `useStaffLoginForm.ts`, `StaffLoginView.vue`, and later `ProfessionalLoginForm.ts` etc.). This is a deliberate exception to the "audience-specific things live in their own module" rule — the auth flow *is* the audience-branching layer. We do **not** nest sub-feature folders inside `user/`.
 - Later: `useAuthStore` could live here too instead of `src/stores/` (TBD — still under discussion)
 
 Things that do **not** belong in `user/`:
 
-- Anything specific to one user kind. Professional-specific fields → `professional/`. FacilityStaff-specific fields → `facility/`.
+- Audience-specific *entity* fields. Professional-specific fields → `professional/`. FacilityStaff-specific fields → `facility/`.
 - Shift-related types — those go in `shifts/`.
-- Form types — those go in their feature module.
+- Form types for non-auth features — those go in their feature module.
 
-If you find yourself adding something to `user/` that isn't about identity / auth / routing, you're probably in the wrong module.
+If you find yourself adding something to `user/` that isn't about identity, auth, or onboarding, you're probably in the wrong module.
 
 ### Enum convention
 

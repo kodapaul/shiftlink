@@ -1,6 +1,6 @@
 # WORKFLOW
 
-How ShiftLink works end-to-end as it stands today. The professional-side flow + public landing are pending; everything below describes the **facility-side** experience and the underlying data model.
+How ShiftLink works end-to-end as it stands today. The facility-side experience is complete. The professional side has working auth, a three-tab dashboard at `/professional` (Profile · Applications · Schedule), and a shift browse + apply view at `/shifts`. The public landing page is the last build phase.
 
 ---
 
@@ -10,15 +10,46 @@ How ShiftLink works end-to-end as it stands today. The professional-side flow + 
                         Visitor lands on /
                                 │
                                 ▼
-                   Auto-redirect to /facility
+                   Auto-redirect to /staff/login
                                 │
-                                ▼
+              ┌─────────────────┴─────────────────┐
+              │                                   │
+              ▼                                   ▼
+        Returning user                        New user
+        (signs in with email)         (clicks "Register your facility")
+
+   The professional flow runs the same shape on `/professional/*`:
+   `loginAsProfessional(id)` for returning, `signUpAsProfessional({ professional })`
+   for new. There is no professional onboarding step — both branches route
+   straight to `/shifts`.
+
+              │                                   │
+              ▼                                   ▼
+       useAuthStore                     /staff/registration
+       .loginAsFacility(staffId)             │
+              │                              ▼
+              │                  Form: read-only facility card + you + password
+              │                  (single-facility model — staff are auto-assigned
+              │                   to the seeded facility, no facility inputs)
+              │                              │
+              │                              ▼
+              │                  useAuthStore.signUpAsFacility({ staff })
+              │                  - pushes to createdStaff[]
+              │                  - opens session as the new staff
+              │                              │
+              │                              ▼
+              │                       /staff/onboarding
+              │                  (4 steps: welcome → facility → invite → done)
+              │                              │
+              │                  auth.markOnboardingComplete(staffId)
+              │                              │
+              └──────────────────┬───────────┘
+                                 ▼
          ┌──────────────────────────────────────────┐
          │ FacilityLayoutView                       │
          │  - Hydrates shifts + applications stores │
-         │  - Auto-impersonates demo facility staff │
-         │    (Sarah Whitfield) until Phase A wires │
-         │    real signup/login                     │
+         │  - Renders sidebar + RouterView          │
+         │  (auth enforced upstream by router guard)│
          └────────────────┬─────────────────────────┘
                           │
        ┌──────────────────┼──────────────────┐
@@ -45,28 +76,55 @@ How ShiftLink works end-to-end as it stands today. The professional-side flow + 
               /facility/     applicant
               shifts/:id/    → cross-store
               edit             mutation
+
+                          │
+                          ▼
+              Sidebar footer "Switch / sign out"
+                  → auth.logout()
+                  → router.push('/staff/login')
 ```
 
-Every store mutation persists to localStorage so the demo state sticks across reload.
+Every store mutation persists to localStorage so the demo state sticks across reload — including the session, registered facility/staff, and the onboarding-complete flag.
 
 ---
 
 ## 2. Route map
 
+Routes are grouped by which **layout shell** they render inside:
+
 ```
-                                Vue Router
-                                     │
-   /             /facility       /facility/      /facility/      /facility/        /facility/
-   (redirects)   (dashboard)     shifts/new      shifts/:id      shifts/:id/edit   applications
-                                                 (detail tabs)                     (triage)
-                                                                                        │
-                                                                                  /facility/map
-                                                                                  (split list+map)
+                                       Vue Router
+                                            │
+   ┌──────────────────────┬─────────────────┼─────────────────┬───────────────────────┐
+   │                      │                 │                 │                       │
+ PUBLIC LAYOUT       AUTH (self-contained)  FACILITY LAYOUT   AUTH-FACILITY-ONLY    NO LAYOUT
+ PublicHeader +      Editorial two-pane     Forest sidebar    Editorial wizard       (clean)
+ RouterView          (forest card + form)   shell             (4-step)
+   │                      │                  │                 │                      │
+   ▼                      ▼                  ▼                 ▼                      ▼
+ /                    /staff/login         /facility           /staff/onboarding    /404
+ /about               /staff/registration  /facility/shifts/new                     (catch-all
+ /contact             /login               /facility/shifts/:id                      → /404)
+ /professional        /register            /facility/shifts/:id/edit
+ /professional/edit                        /facility/applications
+ /shifts (public,                          /facility/map
+   no staff)
 ```
 
-Guards (`src/router/index.ts`): `/facility/*` requires `userType === 'facility_staff'`. Until Phase A lands real auth, the layout view auto-impersonates so unauth visits don't 404.
+The professional side gets the "primary" unprefixed URLs (`/login`, `/register`, `/professional`) since they're the larger audience; staff is namespaced under `/staff/...` and `/facility/...`.
 
-Phase A will add `/login`, `/signup`, `/facility/onboarding`. Phase B will add `/shifts` and `/shifts/:id` (professional side).
+Guards (`src/router/index.ts`) — all in `router.beforeEach`, driven by route `meta`:
+
+- **`meta.guestOnly: true`** (the four auth routes) — if already signed in, bounce away. Authed facility staff → `/facility`; authed professional → `/professional`. Centralised in `homePathFor(userType)`.
+- **Facility staff lockdown** — `auth.isFacilityStaff` users are scoped to their portal. The guard runs after the guestOnly check and redirects any path that isn't `/facility/*`, `/staff/onboarding`, or `/404` to `/facility`. So staff can't browse the public landing, About / Contact stubs, the professional dashboard, or the shift search — they live entirely inside their sidebar shell.
+- **`meta.requiresUserType: 'facility_staff' | 'professional'`** — needs a matching session. Unauth visitors are sent to the appropriate login (`loginPathFor(required)` — staff routes go to `/staff/login`, professional routes to `/login`). Wrong-audience visitors bounce to their own home via `homePathFor(auth.userType)`.
+- **`meta.allowDuringOnboarding: true`** (onboarding view only) — exempts the route from the "incomplete onboarding → bounce to onboarding" check so the onboarding view itself doesn't redirect-loop.
+- **Onboarding gate:** authed facility staff with `hasCompletedOnboarding === false` get pushed to `/staff/onboarding` unless the destination is onboarding-exempt. Professionals don't have onboarding so this never fires for them.
+- **Anything else** (`/404` and any unknown path) renders the 404 view.
+
+The professional **browse + apply** experience at `/shifts` is shipped: filter pills, search, split list+map layout, an apply dialog with multi-state gate, and "Applied" pills on rows the pro has already submitted. **Browsing is public for unauth visitors and professionals** — anyone (signed-out or signed-in pro) can visit `/shifts` and see the open shifts and the map. Facility staff are blocked at the guard level (see lockdown rule below) and never reach the page. Applying is gated to authed professionals: unauth visitors see a "Sign in to apply" banner with `/login` + `/register` CTAs in the dialog; pros with incomplete profiles see the "Complete your profile" CTA. Owned by the `shifts/` module — promoted from domain-only to domain + feature when this view shipped.
+
+The dialog also carries a "wrong-audience" banner branch for facility staff as a defensive fallback, but in normal operation the guard prevents staff from ever reaching `/shifts` so it stays unreachable.
 
 ---
 
@@ -131,7 +189,11 @@ Architecture rule (also in CONFIGURATIONS.md): components stay dumb, composables
 
 | What | Where | Survives reload? | Survives device change? |
 |---|---|---|---|
-| `userType` + `userId` + `facilityId` (auth) | Pinia + localStorage | ✅ | ❌ (per-browser) |
+| `userType` + `userId` + `facilityId` (active session) | Pinia + localStorage | ✅ | ❌ (per-browser) |
+| `createdStaff[]` (registered via `/staff/registration`, all bound to the seeded facility) | Pinia + localStorage | ✅ | ❌ |
+| `createdProfessionals[]` (registered via `/register`) | Pinia + localStorage | ✅ | ❌ |
+| `professionalProfileOverrides` (Profile-tab edits to seeded pros, keyed by id) | Pinia + localStorage | ✅ | ❌ |
+| `onboardedStaffIds[]` (per-staff onboarding-complete flag) | Pinia + localStorage | ✅ | ❌ |
 | `shifts[]` (source of truth) | Pinia + localStorage | ✅ | ❌ |
 | `applications[]` (source of truth) | Pinia + localStorage | ✅ | ❌ |
 | Form values during editing | reactive composable (`reactive`) | ❌ (intentional) | ❌ |

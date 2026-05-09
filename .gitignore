@@ -44,3 +44,7 @@ screenshots/*
 
 # Claude Code tooling: launch.json for the local dev preview, not useful to others
 .claude/
+
+# Firebase
+.firebase/
+firebase-debug.log

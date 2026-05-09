@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "pdv-website-7469f"
+  },
+  "targets": {
+    "pdv-website-7469f": {
+      "hosting": {
+        "shiftlink": ["shiftlink-81e16"]
+      }
+    }
+  }
+}

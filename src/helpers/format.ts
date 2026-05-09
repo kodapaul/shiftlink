@@ -15,6 +15,20 @@ export function formatShiftDate(iso: string): string {
   })
 }
 
+/**
+ * "14 Jun 1992" — day · short month · year, no weekday. Use this for
+ * date-of-birth, expiry dates, and any context where the weekday isn't
+ * meaningful. Year is always included since these dates can span decades.
+ */
+export function formatDate(iso: string): string {
+  const d = new Date(iso + 'T00:00:00')
+  return d.toLocaleDateString('en-AU', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+  })
+}
+
 /** Convert a 24-hour 'HH:mm' string to 12-hour 'h:mm AM/PM'. */
 export function formatTime12h(time24: string): string {
   const [hStr, m = '00'] = time24.split(':')
