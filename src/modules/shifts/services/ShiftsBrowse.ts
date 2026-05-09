@@ -29,6 +29,12 @@ export interface ShiftsBrowseFilters {
   shiftTypes: Set<ShiftType>
   /** When true, only `urgency === 'urgent'` shifts are shown. */
   urgentOnly: boolean
+  /** ISO date (YYYY-MM-DD). When set, only shifts on or after this date
+   *  pass through. Empty string disables the filter. */
+  dateFrom: string
+  /** ISO date (YYYY-MM-DD). When set, only shifts on or before this date
+   *  pass through. Empty string disables the filter. */
+  dateTo: string
 }
 
 /**
@@ -49,6 +55,9 @@ export function filterShifts(
   return shifts.filter((s) => {
     if (hasShiftTypeFilter && !filters.shiftTypes.has(s.shiftType)) return false
     if (filters.urgentOnly && s.urgency !== 'urgent') return false
+    // Date range — string compare works because dates are 'YYYY-MM-DD'.
+    if (filters.dateFrom && s.date < filters.dateFrom) return false
+    if (filters.dateTo && s.date > filters.dateTo) return false
     if (!q) return true
 
     const haystack = [

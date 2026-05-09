@@ -45,6 +45,8 @@ export function useShiftsBrowse() {
     searchQuery: '',
     shiftTypes: new Set<ShiftType>(),
     urgentOnly: false,
+    dateFrom: '',
+    dateTo: '',
   })
 
   function toggleShiftType(t: ShiftType): void {
@@ -56,6 +58,8 @@ export function useShiftsBrowse() {
     filters.searchQuery = ''
     filters.shiftTypes = new Set<ShiftType>()
     filters.urgentOnly = false
+    filters.dateFrom = ''
+    filters.dateTo = ''
   }
 
   // --- Derived list ----------------------------------------------------

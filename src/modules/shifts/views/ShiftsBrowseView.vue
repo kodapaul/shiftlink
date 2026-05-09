@@ -22,13 +22,25 @@ import { useShiftsStore } from '@/stores/shifts'
 import { useApplicationsStore } from '@/stores/applications'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import DatePicker from '@/components/DatePicker.vue'
 import ShiftMap from '@/components/ShiftMap.vue'
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetFooter,
+} from '@/components/ui/sheet'
+import facilitiesData from '@/data/facilities.json'
+import type { Facility } from '@/modules/facility/types'
 import {
   CalendarSearch,
   Flame,
   List as ListIcon,
   Map as MapIcon,
   Search,
+  SlidersHorizontal,
   X,
 } from 'lucide-vue-next'
 import { ShiftType, SHIFT_TYPE_LABELS } from '@/modules/shifts/enums'
@@ -59,12 +71,24 @@ const {
   cancelApplication,
 } = useShiftsBrowse()
 
+// The single demo facility — every shift implicitly belongs to it. Pulled
+// once and printed on every browse row so the brief's "facility name on
+// each card" requirement is met explicitly. Single-facility model means
+// we don't need a per-shift facilityId lookup.
+const facility = (facilitiesData as Facility[])[0]
+const facilityName = facility?.name ?? null
+
 // Mobile view toggle. lg+ always shows both list and map side-by-side;
 // mobile shows ONE at a time (toggled via a segmented control in the
 // filter bar) so the user gets the full vertical real estate for whichever
 // view they're using.
 type MobileView = 'list' | 'map'
 const mobileView = ref<MobileView>('list')
+
+// Filters drawer state — keeps the toolbar clean. Search stays inline
+// (used most often), every other filter lives behind a button that opens
+// this side sheet.
+const filtersOpen = ref<boolean>(false)
 
 // Apply dialog state.
 const dialogOpen = ref<boolean>(false)
@@ -81,8 +105,23 @@ const hasActiveFilters = computed<boolean>(
   () =>
     filters.searchQuery.trim().length > 0 ||
     filters.shiftTypes.size > 0 ||
-    filters.urgentOnly,
+    filters.urgentOnly ||
+    filters.dateFrom !== '' ||
+    filters.dateTo !== '',
 )
+
+/** Count of non-search active filters — rendered as a badge next to the
+ *  Filters button so the user sees at a glance how many constraints are
+ *  applied without opening the drawer. Search is excluded because it has
+ *  its own inline UI. */
+const activeFilterCount = computed<number>(() => {
+  let n = 0
+  n += filters.shiftTypes.size
+  if (filters.urgentOnly) n += 1
+  if (filters.dateFrom) n += 1
+  if (filters.dateTo) n += 1
+  return n
+})
 
 const resultsLabel = computed<string>(() => {
   const n = filteredShifts.value.length
@@ -149,68 +188,58 @@ function handleCancelApplication(applicationId: string): void {
         </p>
       </header>
 
-      <!-- Filter bar -->
+      <!-- Filter bar — search stays inline (used most often). Everything
+           else lives behind the Filters button, which opens a side sheet
+           with all the controls grouped. Keeps the toolbar clean across
+           every viewport. -->
       <section class="space-y-3">
-        <div class="relative">
-          <Search
-            class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/45"
-          />
-          <Input
-            v-model="filters.searchQuery"
-            type="search"
-            placeholder="Search by role, location, or note"
-            class="h-12 rounded-xl border-mist bg-bone pl-11 pr-10 text-[15px]"
-          />
-          <button
-            v-if="filters.searchQuery"
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+          <div class="relative min-w-[200px] flex-1">
+            <Search
+              class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/45"
+            />
+            <Input
+              v-model="filters.searchQuery"
+              type="search"
+              placeholder="Search by role, location, or note"
+              class="h-12 rounded-xl border-mist bg-bone pl-11 pr-10 text-[15px]"
+            />
+            <button
+              v-if="filters.searchQuery"
+              type="button"
+              aria-label="Clear search"
+              class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-1 text-ink/45 transition-colors hover:bg-ink/5 hover:text-ink"
+              @click="filters.searchQuery = ''"
+            >
+              <X class="h-4 w-4" />
+            </button>
+          </div>
+
+          <Button
             type="button"
-            aria-label="Clear search"
-            class="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer rounded-full p-1 text-ink/45 transition-colors hover:bg-ink/5 hover:text-ink"
-            @click="filters.searchQuery = ''"
+            variant="outline"
+            class="h-12 flex-shrink-0 rounded-xl border-mist bg-bone px-4 text-[14px] font-medium text-ink hover:bg-mist/60"
+            @click="filtersOpen = true"
           >
-            <X class="h-4 w-4" />
-          </button>
+            <SlidersHorizontal class="h-4 w-4" />
+            <span>Filters</span>
+            <span
+              v-if="activeFilterCount > 0"
+              class="ml-1 inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-ink px-1.5 text-[11px] font-medium tabular-nums text-cream"
+            >
+              {{ activeFilterCount }}
+            </span>
+          </Button>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
           <button
-            v-for="t in shiftTypeOptions"
-            :key="t"
-            type="button"
-            :aria-pressed="filters.shiftTypes.has(t)"
-            :class="[
-              'inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full border px-3 text-[12px] font-medium transition-colors',
-              filters.shiftTypes.has(t)
-                ? 'border-ink bg-ink text-cream'
-                : 'border-mist bg-bone text-ink/65 hover:border-ink/30 hover:text-ink',
-            ]"
-            @click="toggleShiftType(t)"
-          >
-            {{ SHIFT_TYPE_LABELS[t] }}
-          </button>
-
-          <button
-            type="button"
-            :aria-pressed="filters.urgentOnly"
-            :class="[
-              'inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full border px-3 text-[12px] font-medium transition-colors',
-              filters.urgentOnly
-                ? 'border-blush bg-blush text-ink'
-                : 'border-mist bg-bone text-ink/65 hover:border-blush/60 hover:text-ink',
-            ]"
-            @click="filters.urgentOnly = !filters.urgentOnly"
-          >
-            <Flame class="h-3 w-3" />
-            Urgent only
-          </button>
-
-          <button
             v-if="hasActiveFilters"
             type="button"
-            class="ml-1 inline-flex h-9 cursor-pointer items-center gap-1 rounded-full px-3 text-[12px] text-ink/55 transition-colors hover:bg-ink/5 hover:text-ink"
+            class="inline-flex h-8 cursor-pointer items-center gap-1 rounded-full px-3 text-[12px] text-ink/55 transition-colors hover:bg-ink/5 hover:text-ink"
             @click="clearFilters"
           >
-            Clear filters
+            Clear all filters
           </button>
 
           <span class="ml-auto text-[12px] text-ink/55 tabular-nums">
@@ -307,6 +336,7 @@ function handleCancelApplication(applicationId: string): void {
             v-for="shift in filteredShifts"
             :key="shift.id"
             :shift="shift"
+            :facility-name="facilityName"
             :application="applicationFor(shift.id)"
             :selected="selectedId === shift.id"
             @select="selectShift"
@@ -354,5 +384,123 @@ function handleCancelApplication(applicationId: string): void {
       @submit="handleSubmit"
       @cancel="handleCancelApplication"
     />
+
+    <!-- Filters drawer — slides in from the right on every viewport.
+         Holds shift type pills, urgency toggle, and date range pickers.
+         All controls bind directly to the same filter state the inline
+         search does, so changes apply live; the Done button just closes
+         the sheet. -->
+    <Sheet v-model:open="filtersOpen">
+      <SheetContent
+        side="right"
+        class="w-[88vw] max-w-md border-l border-mist bg-cream p-0"
+      >
+        <SheetHeader class="border-b border-mist px-6 py-5">
+          <SheetTitle
+            class="text-left font-serif text-xl font-semibold tracking-tight text-ink"
+          >
+            Filters
+          </SheetTitle>
+          <SheetDescription class="text-left text-[13px] text-ink/60">
+            Narrow the shift list. Changes apply as you go.
+          </SheetDescription>
+        </SheetHeader>
+
+        <div class="flex h-[calc(100%-9rem)] flex-col gap-7 overflow-y-auto px-6 py-6">
+          <!-- Shift type -->
+          <div class="space-y-3">
+            <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-ink/55">
+              Shift type
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <button
+                v-for="t in shiftTypeOptions"
+                :key="t"
+                type="button"
+                :aria-pressed="filters.shiftTypes.has(t)"
+                :class="[
+                  'inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full border px-3.5 text-[12px] font-medium transition-colors',
+                  filters.shiftTypes.has(t)
+                    ? 'border-ink bg-ink text-cream'
+                    : 'border-mist bg-bone text-ink/65 hover:border-ink/30 hover:text-ink',
+                ]"
+                @click="toggleShiftType(t)"
+              >
+                {{ SHIFT_TYPE_LABELS[t] }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Urgency -->
+          <div class="space-y-3">
+            <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-ink/55">
+              Urgency
+            </p>
+            <button
+              type="button"
+              :aria-pressed="filters.urgentOnly"
+              :class="[
+                'inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full border px-3.5 text-[12px] font-medium transition-colors',
+                filters.urgentOnly
+                  ? 'border-blush bg-blush text-ink'
+                  : 'border-mist bg-bone text-ink/65 hover:border-blush/60 hover:text-ink',
+              ]"
+              @click="filters.urgentOnly = !filters.urgentOnly"
+            >
+              <Flame class="h-3 w-3" />
+              Urgent shifts only
+            </button>
+          </div>
+
+          <!-- Date range -->
+          <div class="space-y-3">
+            <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-ink/55">
+              Date range
+            </p>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="space-y-1.5">
+                <label class="text-[12px] font-medium text-ink/70">From</label>
+                <DatePicker
+                  v-model="filters.dateFrom"
+                  placeholder="Any"
+                  :max-date="filters.dateTo || undefined"
+                  class="h-11 w-full rounded-xl border-mist bg-bone text-[13px] font-medium text-ink/75"
+                />
+              </div>
+              <div class="space-y-1.5">
+                <label class="text-[12px] font-medium text-ink/70">To</label>
+                <DatePicker
+                  v-model="filters.dateTo"
+                  placeholder="Any"
+                  :min-date="filters.dateFrom || undefined"
+                  class="h-11 w-full rounded-xl border-mist bg-bone text-[13px] font-medium text-ink/75"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <SheetFooter class="border-t border-mist bg-bone/50 px-6 py-4">
+          <div class="flex w-full items-center justify-between gap-3">
+            <Button
+              type="button"
+              variant="ghost"
+              class="h-10 rounded-full px-4 text-[13px] text-ink/65 hover:bg-ink/5 hover:text-ink"
+              :disabled="activeFilterCount === 0"
+              @click="clearFilters"
+            >
+              Clear all
+            </Button>
+            <Button
+              type="button"
+              class="h-10 rounded-full bg-ink px-5 text-[13px] font-medium text-cream hover:bg-ink/90"
+              @click="filtersOpen = false"
+            >
+              Show {{ filteredShifts.length }} {{ filteredShifts.length === 1 ? 'shift' : 'shifts' }}
+            </Button>
+          </div>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
   </main>
 </template>

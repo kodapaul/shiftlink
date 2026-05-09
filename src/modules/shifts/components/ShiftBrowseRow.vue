@@ -18,6 +18,7 @@
 
 import { computed } from 'vue'
 import {
+  Building2,
   CalendarDays,
   Clock,
   DollarSign,
@@ -37,6 +38,9 @@ import ApplicationStatusBadge from '@/modules/applications/components/Applicatio
 
 const props = defineProps<{
   shift: Shift
+  /** Facility name to print on each card. Single-facility prototype, so the
+   *  parent passes this once for every row. */
+  facilityName?: string | null
   /** Strongest existing application by the active pro for this shift, if any. */
   application?: ShiftApplication | null
   /** Highlighted treatment when this row is the focus of the parent. */
@@ -92,6 +96,13 @@ function onApplyClick(): void {
             Urgent
           </span>
         </div>
+        <p
+          v-if="facilityName"
+          class="flex items-center gap-1.5 text-[13px] font-medium text-ink/75"
+        >
+          <Building2 class="h-3.5 w-3.5 text-ink/45" />
+          <span class="truncate">{{ facilityName }}</span>
+        </p>
         <p class="text-[12px] text-ink/55">{{ relativeLabel }}</p>
       </div>
 
