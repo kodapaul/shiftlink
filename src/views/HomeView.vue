@@ -95,6 +95,11 @@ function handleContactSubmit() {
 // doesn't hijack the page when users scroll past it.
 const contactMapEl = ref<HTMLDivElement | null>(null)
 let contactMap: L.Map | null = null
+/** Watches the map container; calls `invalidateSize()` when it resizes
+ *  so Leaflet redraws tiles correctly if the container started hidden /
+ *  zero-size (e.g. below the fold during initial mount, or transitioning
+ *  in) and later expanded to its real dimensions. */
+let contactMapResizeObserver: ResizeObserver | null = null
 
 const SHIFTLINK_HQ: [number, number] = [-33.8688, 151.2093]
 
@@ -134,10 +139,29 @@ onMounted(() => {
     .bindPopup(
       '<strong style="font-family: Fraunces, serif;">ShiftLink HQ</strong><br/>Sydney, NSW',
     )
+
+  // ResizeObserver — see comment on `contactMapResizeObserver`. Calls are
+  // cheap when the size hasn't actually changed, so it's safe to run
+  // every time. Without this Leaflet sometimes only loads a single tile
+  // when the container started zero-size on mount.
+  if (typeof ResizeObserver !== 'undefined' && contactMapEl.value) {
+    contactMapResizeObserver = new ResizeObserver(() => {
+      try {
+        contactMap?.invalidateSize()
+      } catch {
+        // Container may be detaching — safe to ignore.
+      }
+    })
+    contactMapResizeObserver.observe(contactMapEl.value)
+  }
 })
 
 onBeforeUnmount(() => {
   if (resetTimer) clearTimeout(resetTimer)
+  if (contactMapResizeObserver) {
+    contactMapResizeObserver.disconnect()
+    contactMapResizeObserver = null
+  }
   contactMap?.remove()
   contactMap = null
 })

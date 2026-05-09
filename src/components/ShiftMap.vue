@@ -50,6 +50,12 @@ let map: L.Map | null = null
 let markersLayer: L.LayerGroup | null = null
 /** Track markers by shift id so we can fly + open popup on selection. */
 const markersById = new Map<string, L.Marker>()
+/** Watches the container box; calls `map.invalidateSize()` whenever it
+ *  changes so Leaflet redraws tiles correctly when the container becomes
+ *  visible (mobile List → Map toggle, hidden tab activation, etc.).
+ *  Without this Leaflet reads dimensions once at mount and never realises
+ *  the container has grown from 0×0 to its real size. */
+let resizeObserver: ResizeObserver | null = null
 
 // Pins are pure HTML/CSS so they pick up brand tokens. Each pin is a small
 // dot inside a soft circle, color-coded by shift status + urgency.
@@ -150,20 +156,21 @@ function isContainerVisible(): boolean {
 
 function renderPins() {
   if (!map || !markersLayer) return
-  try {
-    markersLayer.clearLayers()
-    markersById.clear()
-    pinnableShifts.value.forEach((shift) => {
+  markersLayer.clearLayers()
+  markersById.clear()
+  pinnableShifts.value.forEach((shift) => {
+    try {
       const marker = L.marker([shift.lat!, shift.lng!], { icon: makeIcon(shift) })
       marker.bindPopup(popupHtml(shift), { closeButton: true, autoClose: true })
       marker.on('click', () => emit('select', shift.id))
       marker.addTo(markersLayer!)
       markersById.set(shift.id, marker)
-    })
-  } catch {
-    // Leaflet can throw if the container is zero-size or detaching mid-update.
-    // Pins will repopulate next time props.shifts changes.
-  }
+    } catch (err) {
+      // Skip a single problem marker (e.g. malformed coords) without
+      // dropping the whole pin layer.
+      console.warn('[ShiftMap] failed to add marker for', shift.id, err)
+    }
+  })
 }
 
 function focusSelected(id: string | null | undefined) {
@@ -210,6 +217,24 @@ onMounted(() => {
 
   markersLayer = L.layerGroup().addTo(map)
   renderPins()
+
+  // Watch the container — invalidateSize whenever it grows from 0×0
+  // (e.g. mobile toggling from List to Map) or otherwise resizes. Also
+  // re-renders pins because Leaflet may have skipped placing them when
+  // the container had no dimensions. Calls are cheap when the size
+  // hasn't actually changed.
+  if (typeof ResizeObserver !== 'undefined' && container.value) {
+    resizeObserver = new ResizeObserver(() => {
+      if (!map) return
+      try {
+        map.invalidateSize()
+        renderPins()
+      } catch {
+        // Container may be detaching mid-update — safe to ignore.
+      }
+    })
+    resizeObserver.observe(container.value)
+  }
 })
 
 watch(
@@ -228,6 +253,10 @@ watch(
 )
 
 onBeforeUnmount(() => {
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+    resizeObserver = null
+  }
   if (map) {
     map.remove()
     map = null
