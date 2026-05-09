@@ -56,6 +56,7 @@ const {
   selectShift,
   completeness,
   applyToShift,
+  cancelApplication,
 } = useShiftsBrowse()
 
 // Mobile view toggle. lg+ always shows both list and map side-by-side;
@@ -118,6 +119,12 @@ function handleSubmit(message: string): void {
   // — the route guard prevents unauth visitors anyway.)
   if (result.reason === 'no-session') {
     dialogError.value = 'Sign in as a professional to apply.'
+  }
+}
+
+function handleCancelApplication(applicationId: string): void {
+  if (cancelApplication(applicationId)) {
+    dialogOpen.value = false
   }
 }
 </script>
@@ -345,6 +352,7 @@ function handleSubmit(message: string): void {
       :completeness="completeness"
       :submitting="submitting"
       @submit="handleSubmit"
+      @cancel="handleCancelApplication"
     />
   </main>
 </template>

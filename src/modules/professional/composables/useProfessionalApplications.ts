@@ -3,10 +3,8 @@
  *
  * Joins `useApplicationsStore.applications` with `useShiftsStore.shifts`
  * (so each row carries its shift context — role, date/time, location, rate)
- * and exposes filter + search state.
- *
- * Pure read — no mutations. Withdrawing an application after submitting
- * isn't modelled in this prototype (see docu/WORKFLOW.md "Out of scope").
+ * and exposes filter + search state. Also surfaces a `cancel` action so
+ * the pro can withdraw an application that's still pending.
  */
 
 import { computed, ref } from 'vue'
@@ -92,10 +90,23 @@ export function useProfessionalApplications() {
     })
   })
 
+  /**
+   * Cancel a pending application. Returns true if it was cancelled,
+   * false if it couldn't be (e.g. already accepted or already gone).
+   * The store enforces ownership (only the pro who applied can cancel)
+   * and the pending-only rule.
+   */
+  function cancel(applicationId: string): boolean {
+    const proId = auth.userId
+    if (!proId) return false
+    return applicationsStore.cancel(applicationId, proId) !== null
+  }
+
   return {
     filter,
     searchQuery,
     rows,
     counts,
+    cancel,
   }
 }

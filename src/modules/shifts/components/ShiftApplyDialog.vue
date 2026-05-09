@@ -50,6 +50,7 @@ import {
 import { Urgency } from '@/modules/shifts/enums'
 import type { Shift } from '@/modules/shifts/types'
 import type { ShiftApplication } from '@/modules/applications/types'
+import { ApplicationStatus } from '@/modules/applications/enums'
 import type { ProfessionalProfileCompleteness } from '@/modules/professional/types'
 import { UserType } from '@/modules/user/enums/UserType'
 
@@ -74,6 +75,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   (e: 'update:open', open: boolean): void
   (e: 'submit', message: string): void
+  (e: 'cancel', applicationId: string): void
 }>()
 
 // Local message buffer. Resets every time the dialog opens for a new shift
@@ -132,6 +134,20 @@ function handleOpenChange(value: boolean): void {
 function handleSubmit(): void {
   if (!canApply.value) return
   emit('submit', message.value)
+}
+
+// True only when the existing application can still be withdrawn —
+// i.e. it's currently pending. Once accepted/declined the decision
+// is final and the Cancel button hides.
+const canCancel = computed<boolean>(
+  () =>
+    !!props.application &&
+    props.application.status === ApplicationStatus.Pending,
+)
+
+function handleCancel(): void {
+  if (!props.application) return
+  emit('cancel', props.application.id)
 }
 </script>
 
@@ -351,6 +367,17 @@ function handleSubmit(): void {
         >
           <Send class="mr-1.5 h-3.5 w-3.5" />
           {{ submitting ? 'Submitting…' : 'Apply for this shift' }}
+        </Button>
+        <!-- Cancel-application button surfaces only when the existing
+             application is still pending. Lets the pro withdraw without
+             leaving the shift dialog. -->
+        <Button
+          v-if="canCancel"
+          type="button"
+          class="h-11 rounded-full bg-ink px-5 text-[13px] font-medium text-cream hover:bg-ink/90"
+          @click="handleCancel"
+        >
+          Cancel application
         </Button>
       </DialogFooter>
     </DialogContent>

@@ -136,6 +136,18 @@ export function useShiftsBrowse() {
     return { ok: true }
   }
 
+  /**
+   * Cancel a pending application — the pro initiating the withdrawal.
+   * Returns true if it was cancelled, false otherwise (e.g. already
+   * accepted, declined, or not the pro's to cancel). Centralised here
+   * so the browse view doesn't have to wire the auth/store details.
+   */
+  function cancelApplication(applicationId: string): boolean {
+    const proId = auth.userId
+    if (!proId || !auth.isProfessional) return false
+    return applicationsStore.cancel(applicationId, proId) !== null
+  }
+
   return {
     // filters
     filters,
@@ -155,5 +167,6 @@ export function useShiftsBrowse() {
     completeness,
     profileIsComplete,
     applyToShift,
+    cancelApplication,
   }
 }

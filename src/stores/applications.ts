@@ -146,6 +146,24 @@ export const useApplicationsStore = defineStore(
       return declined
     }
 
+    /**
+     * Cancel a pending application — initiated by the professional who
+     * created it (NOT by facility staff). Removes the record entirely
+     * so the pro can re-apply later if they change their mind. Only
+     * pending applications can be cancelled; once accepted/declined the
+     * decision is final and cancellation is a no-op.
+     *
+     * Returns the cancelled record if found and pending, otherwise null.
+     */
+    function cancel(applicationId: string, professionalId: string): ShiftApplication | null {
+      const target = getById(applicationId)
+      if (!target) return null
+      if (target.status !== ApplicationStatus.Pending) return null
+      if (target.professionalId !== professionalId) return null
+      applications.value = applications.value.filter((a) => a.id !== applicationId)
+      return target
+    }
+
     // Convenience: total pending applications across all shifts.
     const pendingTotal = computed(() =>
       applications.value.filter((a) => a.status === ApplicationStatus.Pending).length,
@@ -160,6 +178,7 @@ export const useApplicationsStore = defineStore(
       apply,
       accept,
       decline,
+      cancel,
     }
   },
   // Same workaround as useShiftsStore: the plugin's S-extends-StateTree

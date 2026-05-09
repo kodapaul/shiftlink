@@ -6,7 +6,7 @@
  * current FacilityStaff and Facility from auth so the footer card is real,
  * not lorem-ipsum'd.
  */
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   Sidebar,
@@ -21,6 +21,7 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from '@/components/ui/sidebar'
+import { useSidebar } from '@/components/ui/sidebar/utils'
 import { useAuthStore } from '@/stores/auth'
 import { useShiftsStore } from '@/stores/shifts'
 import { useApplicationsStore } from '@/stores/applications'
@@ -40,6 +41,18 @@ const auth = useAuthStore()
 const shifts = useShiftsStore()
 const applications = useApplicationsStore()
 
+// Pull mobile-drawer state from the SidebarProvider context. Watching
+// `route.path` lets us close the off-canvas sheet when the user picks
+// a nav item — without this it stays open after the navigation lands,
+// covering the new page.
+const { isMobile, setOpenMobile } = useSidebar()
+watch(
+  () => route.path,
+  () => {
+    if (isMobile.value) setOpenMobile(false)
+  },
+)
+
 // Read both records from the auth store — it already merges seed + any
 // facility/staff registered at runtime.
 const facility = computed(() => auth.currentFacility)
@@ -47,7 +60,7 @@ const staff = computed(() => auth.currentFacilityStaff)
 
 function handleLogout() {
   auth.logout()
-  router.push('/staff/login')
+  router.push('/')
 }
 
 const initials = computed(() => {

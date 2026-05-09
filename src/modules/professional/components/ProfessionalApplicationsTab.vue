@@ -19,7 +19,7 @@ import {
 } from '../composables/useProfessionalApplications'
 import ProfessionalApplicationRow from './ProfessionalApplicationRow.vue'
 
-const { filter, searchQuery, rows, counts } = useProfessionalApplications()
+const { filter, searchQuery, rows, counts, cancel } = useProfessionalApplications()
 
 const tabs: ReadonlyArray<{ id: ApplicationsFilter; label: string }> = [
   { id: 'pending', label: 'Pending' },
@@ -129,6 +129,7 @@ function countFor(id: ApplicationsFilter): number {
         <ProfessionalApplicationRow
           :application="row.application"
           :shift="row.shift"
+          @cancel="cancel"
         />
       </li>
     </ul>
