@@ -156,6 +156,19 @@ npm run build
 firebase deploy --only hosting:shiftlink
 ```
 
+## Tradeoffs and decisions
+
+- **Vue instead of React.** I know Vue better, so on a short timeline that mattered. Both could meet the brief equally well.
+- **SPA, not SSR.** The app is mostly auth-gated, so server side rendering would not really pay off, and skipping it kept the setup simple.
+- **localStorage instead of a real backend.** The brief said mock data was fine, so I went with that instead of spending time wiring up Firebase or Supabase.
+- **Pinia with the persistedstate plugin.** Saves me from writing manual JSON parse / stringify wrappers everywhere. Cross-store side effects, like accepting an application also flipping the shift to claimed, live in the store, not the components.
+- **shadcn-vue, heavily themed.** I used it for the parts where accessibility is hard to get right (Dialog, Popover, Select, Tabs, Sidebar, Sheet). Custom components like the TimePicker and ShiftMap I built from scratch. The CSS variables in main.css override the shadcn defaults to the eucalyptus palette.
+- **Editorial typography over SaaS density.** Fraunces paired with Inter, generous radius, no drop shadows. The brief was clear about not wanting it to look like a Bootstrap template.
+- **Single facility model.** A multi-facility setup felt like over-engineering for a prototype. Every shift belongs to the one demo facility, but it carries its own optional location and coordinates so it can still pin to different places on the map.
+- **Cards over tables.** More responsive, more flexible on mobile, and a better fit for the editorial language.
+- **Leaflet with CartoDB Voyager tiles.** No API key, no quota, and the soft warm tiles match the cream palette better than Google Maps or Mapbox would.
+- **Custom TimePicker.** The native time input looks different across browsers and operating systems, and that inconsistency would have broken the rest of the form polish.
+
 ## What I'd do next
 
 Personally, I want to see this app deployed and used by other people. If I had one more day, I would have added an SEO and server-side rendering, maybe utiliz technologies such as NuxtJs, Nextjs, or Astro. However, it would require a server setup, which would take time to deploy and optimize. If I had one more week, I would have added an authentication module and Firestore to simulate real user data. Maybe using Firebase Auth and Firestore would be enough for it to be an MVP. In addition, I would have used a more reliable map discovery feature. If I had one more month, I would set up a VPS to deploy Redis, observability, SQL, a search engine, and a backend using Node, Express, or Laravel to process real user requests and real data. If I had one year, I would have deployed it and added richer features like LLM features, a chatbot, event-driven features, AI matching, and a mobile app.
