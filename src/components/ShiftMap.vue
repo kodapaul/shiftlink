@@ -138,21 +138,39 @@ const pinnableShifts = computed(() =>
   ),
 )
 
+/** True when the map container is currently rendered with a non-zero
+ *  size. Used to skip Leaflet calls when the container is `display:none`
+ *  (e.g. mobile List/Map toggle is on List, or the parent route is
+ *  transitioning out). Calls like `flyTo` throw on a zero-size container. */
+function isContainerVisible(): boolean {
+  const el = container.value
+  if (!el) return false
+  return el.offsetWidth > 0 && el.offsetHeight > 0
+}
+
 function renderPins() {
   if (!map || !markersLayer) return
-  markersLayer.clearLayers()
-  markersById.clear()
-  pinnableShifts.value.forEach((shift) => {
-    const marker = L.marker([shift.lat!, shift.lng!], { icon: makeIcon(shift) })
-    marker.bindPopup(popupHtml(shift), { closeButton: true, autoClose: true })
-    marker.on('click', () => emit('select', shift.id))
-    marker.addTo(markersLayer!)
-    markersById.set(shift.id, marker)
-  })
+  try {
+    markersLayer.clearLayers()
+    markersById.clear()
+    pinnableShifts.value.forEach((shift) => {
+      const marker = L.marker([shift.lat!, shift.lng!], { icon: makeIcon(shift) })
+      marker.bindPopup(popupHtml(shift), { closeButton: true, autoClose: true })
+      marker.on('click', () => emit('select', shift.id))
+      marker.addTo(markersLayer!)
+      markersById.set(shift.id, marker)
+    })
+  } catch {
+    // Leaflet can throw if the container is zero-size or detaching mid-update.
+    // Pins will repopulate next time props.shifts changes.
+  }
 }
 
 function focusSelected(id: string | null | undefined) {
   if (!id || !map) return
+  // Skip when the container isn't laid out (mobile list view, hidden tab,
+  // route transitioning) — flyTo throws on zero-size containers.
+  if (!isContainerVisible()) return
   const marker = markersById.get(id)
   if (!marker) return
   // Defensive: if the marker somehow has NaN/Inf coords (stale localStorage,
@@ -160,9 +178,13 @@ function focusSelected(id: string | null | undefined) {
   // list is still selectable, we just can't pin it on the map.
   const ll = marker.getLatLng()
   if (!Number.isFinite(ll.lat) || !Number.isFinite(ll.lng)) return
-  map.flyTo(ll, props.selectedZoom, { animate: true, duration: 0.7 })
-  // Wait for the fly animation, then open the popup so it lands centered.
-  marker.openPopup()
+  try {
+    map.flyTo(ll, props.selectedZoom, { animate: true, duration: 0.7 })
+    marker.openPopup()
+  } catch {
+    // Leaflet sometimes throws during transitions or when the map is in an
+    // intermediate state. Silently skip — selection is preserved in the list.
+  }
 }
 
 onMounted(() => {

@@ -155,9 +155,9 @@ function handleCancel(): void {
   <Dialog :open="open" @update:open="handleOpenChange">
     <DialogContent
       v-if="shift"
-      class="max-w-2xl gap-0 overflow-hidden rounded-3xl border border-mist bg-bone p-0"
+      class="flex max-h-[90dvh] max-w-3xl flex-col gap-0 overflow-hidden rounded-3xl border border-mist bg-bone p-0 sm:max-w-3xl"
     >
-      <DialogHeader class="space-y-2 border-b border-mist px-7 py-6">
+      <DialogHeader class="flex-shrink-0 space-y-2 border-b border-mist px-7 py-6">
         <div class="flex flex-wrap items-center gap-2">
           <span
             class="text-[10px] uppercase tracking-[0.22em] text-ink/55"
@@ -182,7 +182,7 @@ function handleCancel(): void {
         </DialogDescription>
       </DialogHeader>
 
-      <div class="space-y-6 px-7 py-6">
+      <div class="min-h-0 flex-1 space-y-6 overflow-y-auto px-7 py-6">
         <!-- Shift facts grid -->
         <dl
           class="grid gap-x-6 gap-y-3 rounded-2xl bg-cream p-5 text-[14px] text-ink/80 sm:grid-cols-2"
@@ -344,7 +344,7 @@ function handleCancel(): void {
       </div>
 
       <DialogFooter
-        class="flex flex-col-reverse gap-2 border-t border-mist bg-cream/40 px-7 py-5 sm:flex-row sm:justify-end"
+        class="flex flex-shrink-0 flex-col-reverse gap-2 border-t border-mist bg-cream/40 px-7 py-5 sm:flex-row sm:justify-end"
       >
         <Button
           type="button"
