@@ -156,6 +156,10 @@ npm run build
 firebase deploy --only hosting:shiftlink
 ```
 
+## What I'd do next
+
+Personally, I want to see this app deployed and used by other people. If I had one more day, I would have added an SEO and server-side rendering, maybe utiliz technologies such as NuxtJs, Nextjs, or Astro. However, it would require a server setup, which would take time to deploy and optimize. If I had one more week, I would have added an authentication module and Firestore to simulate real user data. Maybe using Firebase Auth and Firestore would be enough for it to be an MVP. In addition, I would have used a more reliable map discovery feature. If I had one more month, I would set up a VPS to deploy Redis, observability, SQL, a search engine, and a backend using Node, Express, or Laravel to process real user requests and real data. If I had one year, I would have deployed it and added richer features like LLM features, a chatbot, event-driven features, AI matching, and a mobile app.
+
 ## Documentation
 
 - [CLAUDE.md](CLAUDE.md) — entry point for AI-assisted development (lists the rules below)
